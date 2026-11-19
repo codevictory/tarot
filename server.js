@@ -7,13 +7,11 @@ const { fetchAllCardsFromKlapi } = require('./lib/klapiClient');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
-const CARDS_JSON = path.join(__dirname, 'data', 'cards.json');
 
-// Card descriptions are hosted by the klapi API and are always fetched from
-// there ALL AT ONCE (one bulk GET /tarot/cards call), never card by card.
-// The bulk result is cached for this long; after that a single fresh bulk
-// call is made. If klapi is unreachable, the local data/cards.json is used
-// as a fallback so the gallery keeps working.
+// Card texts are hosted by the klapi API and are always fetched from there
+// ALL AT ONCE (one bulk GET /tarot/cards call), never card by card, and never
+// from a local file. The bulk result is cached for this long; after that a
+// single fresh bulk call is made.
 // Env: KLAPI_BASE_URL, KLAPI_SITE_API_KEY (see lib/klapiClient.js),
 // TAROT_CARDS_CACHE_TTL_MS (default 60000).
 const CARDS_CACHE_TTL_MS = Number(process.env.TAROT_CARDS_CACHE_TTL_MS || 60_000);
@@ -21,43 +19,15 @@ const CARDS_CACHE_TTL_MS = Number(process.env.TAROT_CARDS_CACHE_TTL_MS || 60_000
 let cardsCache = null;
 let cardsCacheAt = 0;
 
-function loadLocalCards() {
-  return JSON.parse(fs.readFileSync(CARDS_JSON, 'utf8'));
-}
-
-function mergeCards(localCards, remoteCards) {
-  if (!Array.isArray(remoteCards) || remoteCards.length === 0) return localCards;
-  const remoteById = new Map(remoteCards.map((card) => [card.id, card]));
-  const localIds = new Set(localCards.map((card) => card.id));
-  const merged = localCards.map((card) =>
-    remoteById.has(card.id) ? { ...card, ...remoteById.get(card.id) } : card
-  );
-  for (const remote of remoteCards) {
-    if (!localIds.has(remote.id)) merged.push(remote);
-  }
-  return merged;
-}
-
 async function getCards() {
   const now = Date.now();
   if (cardsCache && now - cardsCacheAt < CARDS_CACHE_TTL_MS) {
     return cardsCache;
   }
-
-  const localCards = loadLocalCards();
-
-  try {
-    const remoteCards = await fetchAllCardsFromKlapi();
-    cardsCache = mergeCards(localCards, remoteCards);
-    cardsCacheAt = now;
-    return cardsCache;
-  } catch (err) {
-    console.warn(`[klapi] bulk fetch failed (${err.message}); serving local cards.json`);
-    if (cardsCache) return cardsCache;
-    cardsCache = localCards;
-    cardsCacheAt = now;
-    return localCards;
-  }
+  const cards = await fetchAllCardsFromKlapi();
+  cardsCache = cards;
+  cardsCacheAt = now;
+  return cards;
 }
 
 const MIME = {
@@ -132,6 +102,6 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
   console.log(`Tarot gallery running at http://localhost:${PORT}`);
   getCards()
-    .then((cards) => console.log(`Loaded ${cards.length} cards (klapi bulk fetch or local fallback)`))
-    .catch((err) => console.warn(`Initial card load failed: ${err.message}`));
+    .then((cards) => console.log(`Loaded ${cards.length} cards from klapi`))
+    .catch((err) => console.warn(`Initial klapi card load failed: ${err.message}`));
 });
