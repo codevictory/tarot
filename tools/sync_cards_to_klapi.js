@@ -6,8 +6,7 @@
 //
 //   npm run sync-cards
 //
-// Uses the same env vars as the server: KLAPI_BASE_URL,
-// KLAPI_SERVICE_USERNAME, KLAPI_SERVICE_PASSWORD.
+// Uses the same env vars as the server: KLAPI_BASE_URL, KLAPI_SITE_API_KEY.
 
 const fs = require('fs');
 const path = require('path');
