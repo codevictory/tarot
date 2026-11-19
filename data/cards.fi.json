@@ -1,0 +1,392 @@
+{
+  "fool": {
+    "title": "Narri",
+    "arcana": "Iso arkana",
+    "description": "Uskon hyppy tuntemattomaan. Narri seisoo jyrkänteen reunalla mukanaan vain pieni kukkaro ja uskollinen koira, valmiina aloittamaan matkan, joka on täynnä mahdollisuuksia ja vilpitöntä luottamusta."
+  },
+  "magician": {
+    "title": "Maagikko",
+    "arcana": "Iso arkana",
+    "description": "Manifestaatio ja neuvokkuus. Toinen käsi taivasta kohti ja toinen maata kohti osoittavat, että sinulla on jo kaikki tarvittavat välineet muuttaaksesi idean todellisuudeksi."
+  },
+  "high-priestess": {
+    "title": "Ylipapitar",
+    "arcana": "Iso arkana",
+    "description": "Intuitio, mysteeri ja sisäinen tieto. Mustien ja valkoisten pylväiden välissä istuva Ylipapitar vartioi salaisuuksia, jotka tulevat esiin, kun luotat vaistoosi selvän sijaan."
+  },
+  "empress": {
+    "title": "Hallitsijatar",
+    "arcana": "Iso arkana",
+    "description": "Runsaus, hedelmällisyys ja hoivaava luovuus. Rehevän puutarhan ja viljapellon ympäröimänä hän on kasvun, mukavuuden ja luonnollisen runsauden energiaa."
+  },
+  "emperor": {
+    "title": "Hallitsija",
+    "arcana": "Iso arkana",
+    "description": "Rakenne, auktoriteetti ja kuri. Kivisellä valtaistuimellaan istuva Hallitsija luo vakautta ja järjestystä — kehikon, joka muuttaa kaaoksen kestäväksi."
+  },
+  "hierophant": {
+    "title": "Ylipappi",
+    "arcana": "Iso arkana",
+    "description": "Perinne, henkinen opastus ja jaettu viisaus. Hän on sillanrakentaja pyhän ja arkisen välillä ja tarjoaa sukupolvelta toiselle välittyviä opetuksia."
+  },
+  "lovers": {
+    "title": "Rakastavaiset",
+    "arcana": "Iso arkana",
+    "description": "Rakkaus, harmonia ja merkityksellinen valinta. Enemmän kuin romanssi, tämä kortti puhuu yhteensopivuudesta — päätöksestä, joka tehdään koko sydämellä."
+  },
+  "chariot": {
+    "title": "Vaunut",
+    "arcana": "Iso arkana",
+    "description": "Päättäväisyys, tahdonvoima ja voitto keskittymisen kautta. Kaksi sfinksiä vetää eri suuntiin, mutta vaununajaja pitää molemmat liikkeessä samaan suuntaan."
+  },
+  "strength": {
+    "title": "Voima",
+    "arcana": "Iso arkana",
+    "description": "Rohkeus, kärsivällisyys ja vaiston lempeä hallinta. Nainen sulkee leijonan leuat rauhallisesti, näyttäen, että todellinen voima tulee myötätunnosta, ei väkivallasta."
+  },
+  "hermit": {
+    "title": "Erakko",
+    "arcana": "Iso arkana",
+    "description": "Yksinäisyys, itsetutkiskelu ja sisäinen opastus. Lyhty korkealla kohotettuna hän valaisee tien kaikille, jotka ovat valmiita etsimään vastauksia sisältään."
+  },
+  "wheel-of-fortune": {
+    "title": "Kohtalonpyörä",
+    "arcana": "Iso arkana",
+    "description": "Syklit, kohtalo ja käännekohdat. Pyörä ei pysähdy koskaan — mikä nousee, myös laskee — tuoden muutoksen, joka on hallitsemattomasi mutta ei ymmärryksesi ulkopuolella."
+  },
+  "justice": {
+    "title": "Oikeudenmukaisuus",
+    "arcana": "Iso arkana",
+    "description": "Oikeudenmukaisuus, totuus ja seuraamus. Vaaka ja miekka muistuttavat, että jokaisella valinnalla on painonsa ja jokaisella teolla vastauksensa."
+  },
+  "hanged-man": {
+    "title": "Hirtetty",
+    "arcana": "Iso arkana",
+    "description": "Antautuminen, uusi näkökulma ja irti päästäminen. Ylösalaisin roikkuessaan hän näkee maailman toisin — joskus täytyy pysähtyä saadakseen selkeyttä."
+  },
+  "death": {
+    "title": "Kuolema",
+    "arcana": "Iso arkana",
+    "description": "Muutos, päätökset ja uudelleensyntyminen. Ei kirjaimellinen kuolema, vaan välttämätön loppu, joka raivaa tilaa uudelle alulle."
+  },
+  "temperance": {
+    "title": "Kohtuus",
+    "arcana": "Iso arkana",
+    "description": "Tasapaino, maltillisuus ja kärsivällinen sekoittaminen. Enkeli kaataa vettä kahden kupin välillä, näyttäen, että harmonia syntyy, kun vastakohtia sekoittaa oikeassa suhteessa."
+  },
+  "devil": {
+    "title": "Paholainen",
+    "arcana": "Iso arkana",
+    "description": "Sitoutuneisuus, materialismi ja varjominä. Jalustaan kahlitut hahmot voisivat lähteä milloin tahansa — kortti kysyy, mikä todella pitää sinut kahleissa."
+  },
+  "tower": {
+    "title": "Torni",
+    "arcana": "Iso arkana",
+    "description": "Äkillinen mullistus ja paljastus. Salaman iskemä torni sortuu — valheelliset rakenteet kaatuvat ja totuus jää jäljelle tuhkaan."
+  },
+  "star": {
+    "title": "Tähti",
+    "arcana": "Iso arkana",
+    "description": "Toivo, inspiraatio ja parantuminen. Veden äärellä polvillaan oleva hahmo kaataa elämää takaisin maailmaan — lempeä lupaus siitä, että vaikeuden jälkeen tulee uudistuminen."
+  },
+  "moon": {
+    "title": "Kuu",
+    "arcana": "Iso arkana",
+    "description": "Harha, pelko ja alitajunta. Kuu valaisee polun mutta vääristää sen — kaikki pimeässä ei ole sitä miltä näyttää; luota intuitioosi."
+  },
+  "sun": {
+    "title": "Aurinko",
+    "arcana": "Iso arkana",
+    "description": "Ilo, menestys ja elinvoima. Aurinko paistaa muurien ympäröimään puutarhaan, jossa lapsi ratsastaa valkoisella hevosella — puhdasta, mutkatonta onnea."
+  },
+  "judgement": {
+    "title": "Tuomio",
+    "arcana": "Iso arkana",
+    "description": "Uudelleensyntyminen, sisäinen kutsu ja vapautus. Enkelin torvi herättää hahmot haudoistaan — kutsu nousta, vastata ja aloittaa alusta."
+  },
+  "world": {
+    "title": "Maailmankaikkeus",
+    "arcana": "Iso arkana",
+    "description": "Kokonaisuus, integraatio ja täyttymys. Laakeriseppeleen sisällä tanssiva hahmo on päättänyt suuren matkan — saavutus ja syklin päättyminen."
+  },
+  "wands-ace": {
+    "title": "Sauvojen ässä",
+    "arcana": "Sauvat",
+    "description": "Inspiraation kipinä ja raaka luova potentiaali. Pilvestä nouseva käsi kannattelee itävää sauvaa — rohkean uuden hankkeen siemen."
+  },
+  "wands-02": {
+    "title": "Sauvojen kaksi",
+    "arcana": "Sauvat",
+    "description": "Suunnittelu, päätös ja katse kohti horisonttia. Linnan muurilla seisova, karttapalloa käsissään pitävä hahmo punnitsee maailmaa — seuraava valinta on sinun."
+  },
+  "wands-03": {
+    "title": "Sauvojen kolme",
+    "arcana": "Sauvat",
+    "description": "Laajeneminen, kaukonäköisyys ja varhainen menestys. Laivat purjehtivat horisontissa, kun kauppias tarkkailee rannalta — pohjatyösi alkaa jo tuottaa hedelmää."
+  },
+  "wands-04": {
+    "title": "Sauvojen neljä",
+    "arcana": "Sauvat",
+    "description": "Juhla, harmonia ja saavutettu välietappi. Kukkaseppeleillä koristeltu paviljonki merkitsee iloista tilaisuutta — kotiinpaluuta, tapaamista tai ansaittua lepoa."
+  },
+  "wands-05": {
+    "title": "Sauvojen viisi",
+    "arcana": "Sauvat",
+    "description": "Konflikti, kilpailu ja egojen törmääminen. Viisi hahmoa heiluttaa sauvojaan näytöstaistelussa — erimielisyys koettelee sinua, mutta sen ei tarvitse voittaa sinua."
+  },
+  "wands-06": {
+    "title": "Sauvojen kuusi",
+    "arcana": "Sauvat",
+    "description": "Voitto, tunnustus ja julkinen menestys. Kansan kannattelemana ratsastaja näyttää, että vaiva näkyy ja palkitaan."
+  },
+  "wands-07": {
+    "title": "Sauvojen seitsemän",
+    "arcana": "Sauvat",
+    "description": "Puolustus, sitkeys ja asemien pitäminen. Kukkulalta käsin torjut hyökkääjiä ylhäältä — sinulla on etulyöntiasema, joten seiso lujasti."
+  },
+  "wands-08": {
+    "title": "Sauvojen kahdeksan",
+    "arcana": "Sauvat",
+    "description": "Nopeus, nopea toiminta ja vauhdikas liike. Kahdeksan sauvaa lentää ilman halki kuin nuolet — viesti, projekti tai muutos saapuu odotettua nopeammin."
+  },
+  "wands-09": {
+    "title": "Sauvojen yhdeksän",
+    "arcana": "Sauvat",
+    "description": "Kestävyys, sisu ja viimeinen taistelu. Haavoittunut mutta valpas, nojaat sauvaasi — väsynyt ehkä, mutta melkein perillä. Jatka."
+  },
+  "wands-10": {
+    "title": "Sauvojen kymmenen",
+    "arcana": "Sauvat",
+    "description": "Vastuu, kuorma ja ylikuormitus. Kannat kaikkia kymmentä sauvaa kerralla ja kampeat eteenpäin — menestys voi muuttua taakaksi, kun kannat sen yksin."
+  },
+  "wands-page": {
+    "title": "Sauvojen lähetti",
+    "arcana": "Sauvat",
+    "description": "Uteliaisuus, tutkiminen ja luovan energian purkaus. Lähetti tuijottaa sauvaansa kuin viestintuoja, joka tuo jännittävän uutisen — uusi intohimo, jota seurata."
+  },
+  "wands-knight": {
+    "title": "Sauvojen ritari",
+    "arcana": "Sauvat",
+    "description": "Impulsiivisuus, seikkailu ja rynnäkkö eteenpäin. Ritari ratsastaa etsimään seikkailuja — rohkeaa, intohimoista toimintaa, joskus ilman suunnitelmaa."
+  },
+  "wands-queen": {
+    "title": "Sauvojen kuningatar",
+    "arcana": "Sauvat",
+    "description": "Itseluottamus, lämpö ja itsenäinen päättäväisyys. Sauva sylissään istuva Kuningatar on liekki, joka on muuttunut vakituiseksi — karismaattinen läsnäolo, joka inspiroi kaikkia ympärillään."
+  },
+  "wands-king": {
+    "title": "Sauvojen kuningas",
+    "arcana": "Sauvat",
+    "description": "Visio, johtajuus ja tulen hallinta. Kuningas pitää sauvaansa kuin valtikkaa — rohkeat ideat toteutetaan kokemuksen tuomalla auktoriteetilla."
+  },
+  "cups-ace": {
+    "title": "Maljojen ässä",
+    "arcana": "Maljat",
+    "description": "Ylivuotava malja, joka merkitsee uutta rakkautta, iloa ja emotionaalisia alkua. Pilvestä ojentuva käsi tarjoaa täyteen valuvaa astiaa — sydämen uusi alku."
+  },
+  "cups-02": {
+    "title": "Maljojen kaksi",
+    "arcana": "Maljat",
+    "description": "Kumppanuus, molemminpuolinen kiintymys ja liitto. Kaksi hahmoa vaihtaa maljoja kasvotusten — merkityksellinen yhteys, joka rakentuu tasa-arvolle ja hellyydelle."
+  },
+  "cups-03": {
+    "title": "Maljojen kolme",
+    "arcana": "Maljat",
+    "description": "Ystävyys, yhteisö ja jaettu juhla. Kolme naista kohottaa maljansa iloisessa kokoontumisessa — yhdessäolo ja yhteinen ilo."
+  },
+  "cups-04": {
+    "title": "Maljojen neljä",
+    "arcana": "Maljat",
+    "description": "Apatia, pohdiskelu ja menetetty tilaisuus. Puun alla istuva hahmo ei huomaa pilvestä ojennettua maljaa — joskus täytyy katsoa ylös nähdäkseen, mitä tarjotaan."
+  },
+  "cups-05": {
+    "title": "Maljojen viisi",
+    "arcana": "Maljat",
+    "description": "Menetys, suru ja kadonneen sureminen. Polvillaan kolmen kaatuneen maljan edessä hahmo suree — mutta kaksi maljaa seisoo vielä hänen takanaan. Kaikki ei ole mennyttä."
+  },
+  "cups-06": {
+    "title": "Maljojen kuusi",
+    "arcana": "Maljat",
+    "description": "Nostalgia, lapsuusmuistot ja viaton ilo. Lapset täyttävät maljansa puutarhassa — paluu yksinkertaisempiin aikoihin ja puhtaaseen, mutkattomaan onneen."
+  },
+  "cups-07": {
+    "title": "Maljojen seitsemän",
+    "arcana": "Maljat",
+    "description": "Valinnat, fantasia ja toiveajattelu. Seitsemän maljaa leijuu pilvissä, kukin pitäen sisällään vision — unelmia on runsaasti, mutta vain yksi voi toteutua."
+  },
+  "cups-08": {
+    "title": "Maljojen kahdeksan",
+    "arcana": "Maljat",
+    "description": "Poislähteminen, syvempi merkitys ja tutun jättäminen. Hahmo lähtee yöllä kuusi maljaa jäljelle jättäen — joskus kasvu tarkoittaa mukavuuden jättämistä."
+  },
+  "cups-09": {
+    "title": "Maljojen yhdeksän",
+    "arcana": "Maljat",
+    "description": "Tyytyväisyys, täyttymys ja toteutunut toive. Kädet ristissä yhdeksän täyden maljan edessä hahmo nauttii riittämisen hiljaisesta ilosta."
+  },
+  "cups-10": {
+    "title": "Maljojen kymmenen",
+    "arcana": "Maljat",
+    "description": "Kestävä harmonia, rakkaus ja emotionaalinen täyttymys. Sateenkaari kaartuu perheen yli, joka tanssii yhdessä — syvä yhteenkuuluvuus ja onnellinen koti."
+  },
+  "cups-page": {
+    "title": "Maljojen lähetti",
+    "arcana": "Maljat",
+    "description": "Luovuus, intuitio ja lempeä uusi viesti. Lähetti tuijottaa kalaa maljassaan — herkkä sielu, joka vastaanottaa emotionaalista tai taiteellista inspiraatiota."
+  },
+  "cups-knight": {
+    "title": "Maljojen ritari",
+    "arcana": "Maljat",
+    "description": "Romanssi, viehätys ja sydämen seuraaminen. Ritari ratsastaa valkoisella hevosella mukanaan malja — rakkauden tarjous tai ihanteellisesti tavoiteltu luova päämäärä."
+  },
+  "cups-queen": {
+    "title": "Maljojen kuningatar",
+    "arcana": "Maljat",
+    "description": "Myötätunto, emotionaalinen kypsyys ja syvä intuitio. Meren rannalla istuva, maljaansa pitävä Kuningatar on hoivaava, empaattinen läsnäolo, joka tuntee enemmän kuin sanoo."
+  },
+  "cups-king": {
+    "title": "Maljojen kuningas",
+    "arcana": "Maljat",
+    "description": "Emotionaalinen tasapaino, diplomatia ja tunteiden hallinta. Aalloista käsin hallitseva Kuningas on rauhallinen kontrolli syvien vesien yli — antelias, viisas ja hyvä."
+  },
+  "swords-ace": {
+    "title": "Miekkojen ässä",
+    "arcana": "Miekat",
+    "description": "Selkeyden läpimurto ja lävistävä uusi idea. Pilvestä nouseva käsi kohottaa laakerilla kruunattua miekkaa — mielen voitto."
+  },
+  "swords-02": {
+    "title": "Miekkojen kaksi",
+    "arcana": "Miekat",
+    "description": "Päättämättömyys, vaikeat valinnat ja umpikuja. Side silmillä ja kaksi risteävää miekkaa tasapainottaen hahmo näyttää, että vaikein valinta on usein se, jota välttelet."
+  },
+  "swords-03": {
+    "title": "Miekkojen kolme",
+    "arcana": "Miekat",
+    "description": "Sydänsuru, suru ja kivulias totuus. Myrsky riehuu kolmella miekalla lävistyneen sydämen yllä — suru, joka on todellinen, mutta ei ikuisesti."
+  },
+  "swords-04": {
+    "title": "Miekkojen neljä",
+    "arcana": "Miekat",
+    "description": "Lepo, toipuminen ja hiljainen pohdiskelu. Rauhallisesti lepäävä hahmo — välttämätön tauko, joka palauttaa voimasi."
+  },
+  "swords-05": {
+    "title": "Miekkojen viisi",
+    "arcana": "Miekat",
+    "description": "Konflikti, ontto voitto ja voiton hinta. Voittaja kerää miekkoja samalla kun toiset vetäytyvät — voitto, joka voi jättää sinut köyhemmäksi kuin ennen."
+  },
+  "swords-06": {
+    "title": "Miekkojen kuusi",
+    "arcana": "Miekat",
+    "description": "Siirtymä, eteenpäin lähteminen ja myrskyn jättäminen taakse. Lautanmies kuljettaa matkustajia kohti tyynempiä vesiä — matka kohti paranemista ja lempeämpää rantaa."
+  },
+  "swords-07": {
+    "title": "Miekkojen seitsemän",
+    "arcana": "Miekat",
+    "description": "Strategia, petos ja hiljaa poistuminen. Hahmo hiipii pois mukanaan viisi miekkaa, kaksi jää taakse — joskus täytyy toimia hiljaa saadaksesi tarvitsemasi."
+  },
+  "swords-08": {
+    "title": "Miekkojen kahdeksan",
+    "arcana": "Miekat",
+    "description": "Rajoitukset, negatiiviset ajatukset ja vangittuna olemisen tunne. Sidottu ja silmät peitettynä kahdeksan miekan edessä hahmo muistuttaa, että häkki on usein itse rakentamasi."
+  },
+  "swords-09": {
+    "title": "Miekkojen yhdeksän",
+    "arcana": "Miekat",
+    "description": "Ahdistus, huoli ja unettomat yöt. Yhdeksän miekan kanssa seinällä istuva hahmo näyttää, miten pelko kasvaa suurimmaksi pimeässä."
+  },
+  "swords-10": {
+    "title": "Miekkojen kymmenen",
+    "arcana": "Miekat",
+    "description": "Kivuliaat päätökset, syvät haavat ja aallonpohja. Kymmenen miekan lävistämä aamunkoitteessa — pimein hetki juuri ennen valon paluuta."
+  },
+  "swords-page": {
+    "title": "Miekkojen lähetti",
+    "arcana": "Miekat",
+    "description": "Valppaus, uteliaisuus ja terävä uusi idea. Lähetti kohottaa miekkansa — innokas mieli, joka etsii totuutta ja uusia näkökulmia."
+  },
+  "swords-knight": {
+    "title": "Miekkojen ritari",
+    "arcana": "Miekat",
+    "description": "Kunnianhimo, toiminta ja taisteluun rynnistäminen. Ritari laukkaa miekka koholla — nopea ja päättäväinen, ja joskus harkitsematon."
+  },
+  "swords-queen": {
+    "title": "Miekkojen kuningatar",
+    "arcana": "Miekat",
+    "description": "Itsenäisyys, selkeät rajat ja rehellinen äly. Pilvien keskellä miekkansa kanssa istuva Kuningatar on tinkimätöntä totuutta — tarkkanäköinen, oikeudenmukainen ja suora."
+  },
+  "swords-king": {
+    "title": "Miekkojen kuningas",
+    "arcana": "Miekat",
+    "description": "Auktoriteetti, totuus ja älyllinen voima. Miekkansa taivasta kohti kohottava Kuningas — järki ja oikeus, jota käytetään vakaalla, lahjomattomalla kädellä."
+  },
+  "pentacles-ace": {
+    "title": "Pentakeleiden ässä",
+    "arcana": "Pentakelit",
+    "description": "Uusi taloudellinen mahdollisuus ja materiaalinen alku. Pilvestä ojentuva käsi tarjoaa kultaista pentakelia — vauraus ja turvallisuus saavat alkunsa."
+  },
+  "pentacles-02": {
+    "title": "Pentakeleiden kaksi",
+    "arcana": "Pentakelit",
+    "description": "Tasapaino, sopeutumiskyky ja asioiden jonglööraus. Hahmo tanssii kahden äärettömyysnauhalla yhdistetyn pentakelin kanssa — monta asiaa liikkeellä yhtä aikaa."
+  },
+  "pentacles-03": {
+    "title": "Pentakeleiden kolme",
+    "arcana": "Pentakelit",
+    "description": "Tiimityö, ammattitaito ja yhteistyö. Muurari veistää katedraalin kaarta, kun asiakas katsoo vierestä — taito tunnustetaan ja palkitaan yhteistyön kautta."
+  },
+  "pentacles-04": {
+    "title": "Pentakeleiden neljä",
+    "arcana": "Pentakelit",
+    "description": "Turvallisuus, kontrolli ja tiukka ote. Kruunuun, käsiin ja jalkoihin puristetut pentakelit antavat vakautta — mutta avoimuuden kustannuksella."
+  },
+  "pentacles-05": {
+    "title": "Pentakeleiden viisi",
+    "arcana": "Pentakelit",
+    "description": "Vaikeudet, menetys ja ulkona kylmässä oleminen. Kaksi hahmoa kulkee lumessa valaistun ikkunan ohi — kamppailu on todellista, mutta suoja ja apu ovat olemassa, jos pyydät."
+  },
+  "pentacles-06": {
+    "title": "Pentakeleiden kuusi",
+    "arcana": "Pentakelit",
+    "description": "Anteliaisuus, antaminen ja reilu vaihto. Kauppias punnitsee kolikoita vaa'allaan ja antaa tarvitseville — hyväntekeväisyys ja tasapainoinen vastavuoroisuus."
+  },
+  "pentacles-07": {
+    "title": "Pentakeleiden seitsemän",
+    "arcana": "Pentakelit",
+    "description": "Kärsivällisyys, pitkän tähtäimen näkymä ja edistyksen arviointi. Maanviljelijä nojaa sauvaansa ja katsoo hedelmää kantavia köynnöksiä — kova työ kasvaa, mutta sato ei ole vielä kypsynyt."
+  },
+  "pentacles-08": {
+    "title": "Pentakeleiden kahdeksan",
+    "arcana": "Pentakelit",
+    "description": "Oppipoikana oleminen, taito ja ahkera harjoittelu. Käsityöläinen veistää pentakeleita yksi toisensa jälkeen — mestaruus syntyy keskittyneestä, toistuvasta työstä."
+  },
+  "pentacles-09": {
+    "title": "Pentakeleiden yhdeksän",
+    "arcana": "Pentakelit",
+    "description": "Ylellisyys, omavaraisuus ja työn hedelmistä nauttiminen. Nainen kävelee viinitarhassaan huppupäinen haukka olallaan — itsenäisyys ja hienostunut mukavuus."
+  },
+  "pentacles-10": {
+    "title": "Pentakeleiden kymmenen",
+    "arcana": "Pentakelit",
+    "description": "Varallisuus, perintö ja kestävä perintö. Perhe pentakeleilla koristellun kaaren alla — sukupolvelta toiselle jaettu vauraus."
+  },
+  "pentacles-page": {
+    "title": "Pentakeleiden lähetti",
+    "arcana": "Pentakelit",
+    "description": "Kunnianhimo, käytännöllisyys ja uusi mahdollisuus. Lähetti tutkii pentakeliaan — maadoitettu lähestymistapa materiaalisten päämäärien toteuttamiseen."
+  },
+  "pentacles-knight": {
+    "title": "Pentakeleiden ritari",
+    "arcana": "Pentakelit",
+    "description": "Kova työ, rutiinit ja luotettava edistyminen. Ritari ratsastaa hitaasti hedelmällisten peltojen halki — tasainen, määrätietoinen työ, joka tuottaa luotettavasti tulosta."
+  },
+  "pentacles-queen": {
+    "title": "Pentakeleiden kuningatar",
+    "arcana": "Pentakelit",
+    "description": "Hoivaavuus, käytännöllisyys ja runsas mukavuus. Rehevässä puutarhassaan istuva Kuningatar on antelias aineellisen ja emotionaalisen turvallisuuden tarjoaja."
+  },
+  "pentacles-king": {
+    "title": "Pentakeleiden kuningas",
+    "arcana": "Pentakelit",
+    "description": "Menestys, runsaus ja materiaalinen mestaruus. Valtikallaan istuva Kuningas, pedestaalillaan härän pää — vauraus ja liiketoimintaosaaminen huipussaan."
+  }
+}

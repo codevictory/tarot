@@ -1,38 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rider-Waite Tarot — All 78 Cards</title>
+  <title>Rider-Waite-tarot — Kaikki 78 korttia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="lang-picker" id="lang-picker" role="group" data-i18n-aria="lang.aria" aria-label="Kieli">
+    <button type="button" class="lang-btn active" data-lang="fi" aria-pressed="true">FI</button>
+    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+
   <header class="site-header">
-    <h1>Rider-Waite Tarot</h1>
-    <p class="subtitle">All 78 cards of the Rider-Waite-Smith deck &mdash; click any card to view it</p>
+    <h1 data-i18n="header.title">Rider-Waite-tarot</h1>
+    <p class="subtitle" data-i18n="header.subtitle">Kaikki Rider-Waite-Smith -pakan 78 korttia &mdash; klikkaa korttia nähdäksesi sen</p>
   </header>
 
-  <nav class="filter-bar" aria-label="Filter cards">
+  <nav class="filter-bar" data-i18n-aria="nav.aria" aria-label="Suodata kortteja">
     <div class="filter-inner">
-      <input type="search" id="card-search" class="card-search" placeholder="Search cards by name or meaning&hellip;" aria-label="Search cards" autocomplete="off" />
-      <div class="filter-buttons" id="filter-buttons" role="group" aria-label="Filter by arcana">
-        <button type="button" class="filter-btn active" data-arcana="All" aria-pressed="true">All</button>
-        <button type="button" class="filter-btn" data-arcana="Major Arcana" aria-pressed="false">Major Arcana</button>
-        <button type="button" class="filter-btn" data-arcana="Wands" aria-pressed="false">Wands</button>
-        <button type="button" class="filter-btn" data-arcana="Cups" aria-pressed="false">Cups</button>
-        <button type="button" class="filter-btn" data-arcana="Swords" aria-pressed="false">Swords</button>
-        <button type="button" class="filter-btn" data-arcana="Pentacles" aria-pressed="false">Pentacles</button>
+      <input type="search" id="card-search" class="card-search" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria" placeholder="Hae kortteja nimen tai merkityksen mukaan&hellip;" aria-label="Hae kortteja" autocomplete="off" />
+      <div class="filter-buttons" id="filter-buttons" role="group" data-i18n-aria="filters.aria" aria-label="Suodata arkanan mukaan">
+        <button type="button" class="filter-btn active" data-arcana="All" data-i18n="filter.All" aria-pressed="true">Kaikki</button>
+        <button type="button" class="filter-btn" data-arcana="Major Arcana" data-i18n="filter.Major Arcana" aria-pressed="false">Iso arkana</button>
+        <button type="button" class="filter-btn" data-arcana="Wands" data-i18n="filter.Wands" aria-pressed="false">Sauvat</button>
+        <button type="button" class="filter-btn" data-arcana="Cups" data-i18n="filter.Cups" aria-pressed="false">Maljat</button>
+        <button type="button" class="filter-btn" data-arcana="Swords" data-i18n="filter.Swords" aria-pressed="false">Miekat</button>
+        <button type="button" class="filter-btn" data-arcana="Pentacles" data-i18n="filter.Pentacles" aria-pressed="false">Pentakelit</button>
       </div>
     </div>
   </nav>
 
   <main id="gallery" class="gallery" aria-live="polite">
-    <p class="loading">Loading the deck&hellip;</p>
+    <p class="loading" data-i18n="loading">Ladataan pakkaa&hellip;</p>
   </main>
 
   <dialog id="card-dialog" class="card-dialog" aria-labelledby="dialog-title">
     <div class="dialog-inner">
-      <button id="dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+      <button id="dialog-close" class="dialog-close" data-i18n-aria="dialog.close" aria-label="Sulje">&times;</button>
       <div class="dialog-image">
         <img id="dialog-img" src="" alt="" />
       </div>

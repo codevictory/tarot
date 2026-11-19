@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "fetch-cards": "python3 tools/fetch_cards.py",
-    "sync-cards": "node tools/sync_cards_to_klapi.js"
+    "sync-cards": "node tools/sync_cards_to_klapi.js",
+    "generate-reset-sql": "python3 tools/generate_reset_tarot_cards_sql.py"
   },
   "license": "MIT"
 }

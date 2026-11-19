@@ -9,35 +9,128 @@ const dialogTitle = document.getElementById('dialog-title');
 const dialogArcana = document.getElementById('dialog-arcana');
 const dialogDescription = document.getElementById('dialog-description');
 const dialogClose = document.getElementById('dialog-close');
+const langPicker = document.getElementById('lang-picker');
 
+// Arcana filter keys are the stable (English) values stored in the database;
+// only the displayed labels are localized.
 const SECTION_ORDER = ['Major Arcana', 'Wands', 'Cups', 'Swords', 'Pentacles'];
 
+const LANG_STORAGE_KEY = 'tarot-lang';
+const SUPPORTED_LANGS = ['fi', 'en'];
+const DEFAULT_LANG = 'fi';
+
+const I18N = {
+  fi: {
+    'document.title': 'Rider-Waite-tarot — Kaikki 78 korttia',
+    'header.title': 'Rider-Waite-tarot',
+    'header.subtitle': 'Kaikki Rider-Waite-Smith -pakan 78 korttia — klikkaa korttia nähdäksesi sen',
+    'lang.aria': 'Kieli',
+    'search.placeholder': 'Hae kortteja nimen tai merkityksen mukaan…',
+    'search.aria': 'Hae kortteja',
+    'nav.aria': 'Suodata kortteja',
+    'filters.aria': 'Suodata arkanan mukaan',
+    'filter.All': 'Kaikki',
+    'filter.Major Arcana': 'Iso arkana',
+    'filter.Wands': 'Sauvat',
+    'filter.Cups': 'Maljat',
+    'filter.Swords': 'Miekat',
+    'filter.Pentacles': 'Pentakelit',
+    'loading': 'Ladataan pakkaa…',
+    'noMatches': 'Yksikään kortti ei vastaa nykyisiä suodattimia.',
+    'loadError': 'Pakkaa ei voitu ladata: ',
+    'viewCard': 'Näytä',
+    'dialog.close': 'Sulje',
+  },
+  en: {
+    'document.title': 'Rider-Waite Tarot — All 78 Cards',
+    'header.title': 'Rider-Waite Tarot',
+    'header.subtitle': 'All 78 cards of the Rider-Waite-Smith deck — click any card to view it',
+    'lang.aria': 'Language',
+    'search.placeholder': 'Search cards by name or meaning…',
+    'search.aria': 'Search cards',
+    'nav.aria': 'Filter cards',
+    'filters.aria': 'Filter by arcana',
+    'filter.All': 'All',
+    'filter.Major Arcana': 'Major Arcana',
+    'filter.Wands': 'Wands',
+    'filter.Cups': 'Cups',
+    'filter.Swords': 'Swords',
+    'filter.Pentacles': 'Pentacles',
+    'loading': 'Loading the deck…',
+    'noMatches': 'No cards match the current filters.',
+    'loadError': 'Could not load the deck: ',
+    'viewCard': 'View',
+    'dialog.close': 'Close',
+  },
+};
+
 let allCards = [];
+let cardsLoaded = false;
+let currentCard = null;
+let lang = normalizeLang(localStorage.getItem(LANG_STORAGE_KEY)) || DEFAULT_LANG;
 const filterState = { arcana: 'All', query: '' };
+
+function normalizeLang(value) {
+  const normalized = (value || '').trim().toLowerCase();
+  return SUPPORTED_LANGS.includes(normalized) ? normalized : null;
+}
+
+function t(key) {
+  return (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key;
+}
+
+// Picks the localized texts for a card, falling back to the canonical
+// (English) base fields when a translation is missing.
+function localizedCard(card, language) {
+  const tr = card.translations && card.translations[language];
+  return {
+    title: (tr && tr.title) || card.title,
+    arcana: (tr && tr.arcana) || card.arcana,
+    description: (tr && tr.description) || card.description,
+  };
+}
+
+// Search matches the card text in every stored language, so a Finnish query
+// also finds cards while the UI is in English and vice versa.
+function searchHaystack(card) {
+  const parts = [card.title, card.arcana, card.description];
+  if (card.translations) {
+    for (const tr of Object.values(card.translations)) {
+      parts.push(tr.title, tr.arcana, tr.description);
+    }
+  }
+  return parts.filter(Boolean).join(' ').toLowerCase();
+}
 
 function filterCards(cards, state) {
   return cards.filter((card) => {
     if (state.arcana !== 'All' && card.arcana !== state.arcana) return false;
-    if (state.query) {
-      const haystack = `${card.title} ${card.arcana} ${card.description}`.toLowerCase();
-      if (!haystack.includes(state.query)) return false;
-    }
+    if (state.query && !searchHaystack(card).includes(state.query)) return false;
     return true;
   });
 }
 
 function applyFilters() {
+  if (!cardsLoaded) {
+    renderMessage(t('loading'));
+    return;
+  }
   renderCards(filterCards(allCards, filterState));
+}
+
+function renderMessage(text) {
+  gallery.textContent = '';
+  const p = document.createElement('p');
+  p.className = 'loading';
+  p.textContent = text;
+  gallery.appendChild(p);
 }
 
 function renderCards(cards) {
   gallery.textContent = '';
 
   if (cards.length === 0) {
-    const p = document.createElement('p');
-    p.className = 'loading';
-    p.textContent = 'No cards match the current filters.';
-    gallery.appendChild(p);
+    renderMessage(t('noMatches'));
     return;
   }
 
@@ -53,18 +146,19 @@ function renderCards(cards) {
 
     const heading = document.createElement('h2');
     heading.className = 'section-title';
-    heading.textContent = arcana;
+    heading.textContent = localizedCard(group[0], lang).arcana;
     gallery.appendChild(heading);
 
     for (const card of group) {
+      const l = localizedCard(card, lang);
       const btn = document.createElement('button');
       btn.className = 'card';
       btn.type = 'button';
-      btn.setAttribute('aria-label', `View ${card.title}`);
+      btn.setAttribute('aria-label', `${t('viewCard')} ${l.title}`);
 
       const img = document.createElement('img');
       img.src = card.image;
-      img.alt = card.title;
+      img.alt = l.title;
       img.loading = 'lazy';
 
       const body = document.createElement('div');
@@ -72,11 +166,11 @@ function renderCards(cards) {
 
       const title = document.createElement('h3');
       title.className = 'card-title';
-      title.textContent = card.title;
+      title.textContent = l.title;
 
       const desc = document.createElement('p');
       desc.className = 'card-desc';
-      desc.textContent = card.description;
+      desc.textContent = l.description;
 
       body.append(title, desc);
       btn.append(img, body);
@@ -87,11 +181,8 @@ function renderCards(cards) {
 }
 
 function openDialog(card) {
-  dialogImg.src = card.image;
-  dialogImg.alt = card.title;
-  dialogTitle.textContent = card.title;
-  dialogArcana.textContent = card.arcana;
-  dialogDescription.textContent = card.description;
+  currentCard = card;
+  renderDialog();
   if (typeof dialog.showModal === 'function') {
     dialog.showModal();
   } else {
@@ -100,10 +191,56 @@ function openDialog(card) {
   document.body.style.overflow = 'hidden';
 }
 
+function renderDialog() {
+  if (!currentCard) return;
+  const l = localizedCard(currentCard, lang);
+  dialogImg.src = currentCard.image;
+  dialogImg.alt = l.title;
+  dialogTitle.textContent = l.title;
+  dialogArcana.textContent = l.arcana;
+  dialogDescription.textContent = l.description;
+}
+
 function closeDialog() {
   if (dialog.open) dialog.close();
   document.body.style.overflow = '';
 }
+
+// Applies the active language to every static UI string, the picker state,
+// and re-renders the gallery and open dialog in the new language.
+function applyLanguage() {
+  document.documentElement.lang = lang;
+  document.title = t('document.title');
+
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+    el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder));
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    el.setAttribute('aria-label', t(el.dataset.i18nAria));
+  });
+
+  langPicker.querySelectorAll('.lang-btn').forEach((btn) => {
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', String(isActive));
+  });
+
+  applyFilters();
+  renderDialog();
+}
+
+langPicker.addEventListener('click', (event) => {
+  const btn = event.target.closest('.lang-btn');
+  if (!btn) return;
+  const next = normalizeLang(btn.dataset.lang);
+  if (!next || next === lang) return;
+  lang = next;
+  localStorage.setItem(LANG_STORAGE_KEY, lang);
+  applyLanguage();
+});
 
 dialogClose.addEventListener('click', closeDialog);
 
@@ -133,6 +270,8 @@ searchInput.addEventListener('input', () => {
   applyFilters();
 });
 
+applyLanguage();
+
 fetch('/api/cards')
   .then((res) => {
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -140,12 +279,10 @@ fetch('/api/cards')
   })
   .then((cards) => {
     allCards = cards;
+    cardsLoaded = true;
     applyFilters();
   })
   .catch((err) => {
-    gallery.innerHTML = '';
-    const p = document.createElement('p');
-    p.className = 'loading';
-    p.textContent = 'Could not load the deck: ' + err.message;
-    gallery.appendChild(p);
+    cardsLoaded = true;
+    renderMessage(t('loadError') + err.message);
   });
