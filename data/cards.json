@@ -1,0 +1,548 @@
+[
+  {
+    "id": "fool",
+    "title": "The Fool",
+    "arcana": "Major Arcana",
+    "image": "cards/fool.jpg",
+    "description": "A leap of faith into the unknown. The Fool stands at the edge of a cliff with only a small bag and a dog at his heels, ready to begin a journey full of possibility and innocent trust."
+  },
+  {
+    "id": "magician",
+    "title": "The Magician",
+    "arcana": "Major Arcana",
+    "image": "cards/magician.jpg",
+    "description": "Manifestation and resourcefulness. With one hand raised to heaven and one pointing to earth, the Magician shows you already hold every tool needed to turn an idea into reality."
+  },
+  {
+    "id": "high-priestess",
+    "title": "The High Priestess",
+    "arcana": "Major Arcana",
+    "image": "cards/high-priestess.jpg",
+    "description": "Intuition, mystery, and inner knowledge. Seated between the black and white pillars, she guards the secrets that surface when you trust your instincts over what is obvious."
+  },
+  {
+    "id": "empress",
+    "title": "The Empress",
+    "arcana": "Major Arcana",
+    "image": "cards/empress.jpg",
+    "description": "Abundance, fertility, and nurturing creativity. Surrounded by a lush garden and a field of wheat, she is the energy of growth, comfort, and natural plenty."
+  },
+  {
+    "id": "emperor",
+    "title": "The Emperor",
+    "arcana": "Major Arcana",
+    "image": "cards/emperor.jpg",
+    "description": "Structure, authority, and discipline. Seated on his stone throne, he provides stability and order — the framework that turns chaos into something lasting."
+  },
+  {
+    "id": "hierophant",
+    "title": "The Hierophant",
+    "arcana": "Major Arcana",
+    "image": "cards/hierophant.jpg",
+    "description": "Tradition, spiritual guidance, and shared wisdom. He is the bridge between the sacred and the everyday, offering teachings passed down through generations."
+  },
+  {
+    "id": "lovers",
+    "title": "The Lovers",
+    "arcana": "Major Arcana",
+    "image": "cards/lovers.jpg",
+    "description": "Love, harmony, and a meaningful choice. More than romance, this card speaks of alignment — a decision made with the whole heart."
+  },
+  {
+    "id": "chariot",
+    "title": "The Chariot",
+    "arcana": "Major Arcana",
+    "image": "cards/chariot.jpg",
+    "description": "Determination, willpower, and victory through focus. Two sphinxes pull in different directions, yet the charioteer keeps them both moving forward."
+  },
+  {
+    "id": "strength",
+    "title": "Strength",
+    "arcana": "Major Arcana",
+    "image": "cards/strength.jpg",
+    "description": "Courage, patience, and gentle mastery over instinct. The woman calmly closes the lion's jaws, showing that true power comes from compassion, not force."
+  },
+  {
+    "id": "hermit",
+    "title": "The Hermit",
+    "arcana": "Major Arcana",
+    "image": "cards/hermit.jpg",
+    "description": "Solitude, introspection, and inner guidance. With his lantern raised high, he lights the way for anyone willing to look within for answers."
+  },
+  {
+    "id": "wheel-of-fortune",
+    "title": "Wheel of Fortune",
+    "arcana": "Major Arcana",
+    "image": "cards/wheel-of-fortune.jpg",
+    "description": "Cycles, fate, and turning points. The wheel never stops spinning — what rises must fall — bringing change beyond your control but not beyond your understanding."
+  },
+  {
+    "id": "justice",
+    "title": "Justice",
+    "arcana": "Major Arcana",
+    "image": "cards/justice.jpg",
+    "description": "Fairness, truth, and consequence. With her scales and her sword, she reminds you that every choice carries a weight and every action has an answer."
+  },
+  {
+    "id": "hanged-man",
+    "title": "The Hanged Man",
+    "arcana": "Major Arcana",
+    "image": "cards/hanged-man.jpg",
+    "description": "Surrender, new perspective, and letting go. Suspended upside down, he sees the world differently — sometimes you must pause in order to gain clarity."
+  },
+  {
+    "id": "death",
+    "title": "Death",
+    "arcana": "Major Arcana",
+    "image": "cards/death.jpg",
+    "description": "Transformation, endings, and rebirth. Not a literal death, but the necessary ending that clears the ground for something new to begin."
+  },
+  {
+    "id": "temperance",
+    "title": "Temperance",
+    "arcana": "Major Arcana",
+    "image": "cards/temperance.jpg",
+    "description": "Balance, moderation, and patient blending. The angel pours water between two cups, showing that harmony comes from mixing opposites in the right measure."
+  },
+  {
+    "id": "devil",
+    "title": "The Devil",
+    "arcana": "Major Arcana",
+    "image": "cards/devil.jpg",
+    "description": "Bondage, materialism, and the shadow self. Chained to the pedestal, the figures could leave at any moment — the card asks what truly holds you back."
+  },
+  {
+    "id": "tower",
+    "title": "The Tower",
+    "arcana": "Major Arcana",
+    "image": "cards/tower.jpg",
+    "description": "Sudden upheaval and revelation. Struck by lightning, the tower crumbles — false structures fall away and truth remains in the ashes."
+  },
+  {
+    "id": "star",
+    "title": "The Star",
+    "arcana": "Major Arcana",
+    "image": "cards/star.jpg",
+    "description": "Hope, inspiration, and healing. Kneeling by the water, the figure pours life back into the world — a gentle promise that renewal follows hardship."
+  },
+  {
+    "id": "moon",
+    "title": "The Moon",
+    "arcana": "Major Arcana",
+    "image": "cards/moon.jpg",
+    "description": "Illusion, fear, and the subconscious. The moon lights the path but distorts it — not everything in the dark is what it seems; trust your intuition."
+  },
+  {
+    "id": "sun",
+    "title": "The Sun",
+    "arcana": "Major Arcana",
+    "image": "cards/sun.jpg",
+    "description": "Joy, success, and vitality. The sun shines over a walled garden where a child rides a white horse — pure, uncomplicated happiness."
+  },
+  {
+    "id": "judgement",
+    "title": "Judgement",
+    "arcana": "Major Arcana",
+    "image": "cards/judgement.jpg",
+    "description": "Rebirth, inner calling, and absolution. The angel's trumpet wakes the figures from their graves — a call to rise, answer, and begin again."
+  },
+  {
+    "id": "world",
+    "title": "The World",
+    "arcana": "Major Arcana",
+    "image": "cards/world.jpg",
+    "description": "Completion, integration, and wholeness. Dancing inside a laurel wreath, the figure has finished the great journey — achievement and the close of a cycle."
+  },
+  {
+    "id": "wands-ace",
+    "title": "Ace of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-ace.jpg",
+    "description": "A spark of inspiration and raw creative potential. A hand emerges from the clouds holding a sprouting wand — the seed of a bold new venture."
+  },
+  {
+    "id": "wands-02",
+    "title": "Two of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-02.jpg",
+    "description": "Planning, decision, and looking toward the horizon. Standing on a castle battlement with a globe in hand, you weigh the world — the choice of where to go next is yours."
+  },
+  {
+    "id": "wands-03",
+    "title": "Three of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-03.jpg",
+    "description": "Expansion, foresight, and early success. Ships sail on the horizon while the merchant watches from the shore — your groundwork is beginning to pay off."
+  },
+  {
+    "id": "wands-04",
+    "title": "Four of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-04.jpg",
+    "description": "Celebration, harmony, and a milestone reached. A garlanded pavilion marks a happy occasion — homecoming, reunion, or a well-earned rest."
+  },
+  {
+    "id": "wands-05",
+    "title": "Five of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-05.jpg",
+    "description": "Conflict, competition, and clashing egos. Five figures swing their wands in a mock battle — disagreement tests you, but it need not defeat you."
+  },
+  {
+    "id": "wands-06",
+    "title": "Six of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-06.jpg",
+    "description": "Victory, recognition, and public success. Carried on shoulders through cheering crowds, the rider shows that effort is seen and rewarded."
+  },
+  {
+    "id": "wands-07",
+    "title": "Seven of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-07.jpg",
+    "description": "Defense, perseverance, and protecting your ground. From the hilltop you fend off attackers from above — you hold the advantage, so stand firm."
+  },
+  {
+    "id": "wands-08",
+    "title": "Eight of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-08.jpg",
+    "description": "Speed, swift action, and rapid movement. Eight wands fly through the air like arrows — a message, project, or change arriving faster than expected."
+  },
+  {
+    "id": "wands-09",
+    "title": "Nine of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-09.jpg",
+    "description": "Resilience, grit, and the last stand. Wounded but watchful, you lean on your wand — tired, perhaps, but nearly there. Keep going."
+  },
+  {
+    "id": "wands-10",
+    "title": "Ten of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-10.jpg",
+    "description": "Burden, responsibility, and overwhelm. Carrying all ten wands at once, you struggle forward — success can become a weight when you carry it alone."
+  },
+  {
+    "id": "wands-page",
+    "title": "Page of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-page.jpg",
+    "description": "Curiosity, exploration, and a burst of creative energy. The page gazes at his wand like a messenger bearing exciting news — a new passion to pursue."
+  },
+  {
+    "id": "wands-knight",
+    "title": "Knight of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-knight.jpg",
+    "description": "Impulsiveness, adventure, and charging ahead. The knight rides off in search of quests — bold, passionate action, sometimes without a plan."
+  },
+  {
+    "id": "wands-queen",
+    "title": "Queen of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-queen.jpg",
+    "description": "Confidence, warmth, and independent determination. Seated with her wand, she is fire made steady — a charismatic presence who inspires everyone around her."
+  },
+  {
+    "id": "wands-king",
+    "title": "King of Wands",
+    "arcana": "Wands",
+    "image": "cards/wands-king.jpg",
+    "description": "Vision, leadership, and mastery of fire. The king holds his wand like a scepter — bold ideas executed with the authority of hard-won experience."
+  },
+  {
+    "id": "cups-ace",
+    "title": "Ace of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-ace.jpg",
+    "description": "An overflowing cup of new love, joy, and emotional beginnings. A hand from the clouds offers a vessel brimming with feeling — a fresh start of the heart."
+  },
+  {
+    "id": "cups-02",
+    "title": "Two of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-02.jpg",
+    "description": "Partnership, mutual attraction, and union. Two figures exchange cups face to face — a meaningful connection built on equality and affection."
+  },
+  {
+    "id": "cups-03",
+    "title": "Three of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-03.jpg",
+    "description": "Friendship, community, and shared celebration. Three women raise their cups in a joyful gathering — togetherness and collective happiness."
+  },
+  {
+    "id": "cups-04",
+    "title": "Four of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-04.jpg",
+    "description": "Apathy, contemplation, and a missed opportunity. Seated under a tree, the figure ignores the cup offered from a cloud — sometimes you must look up to see what is being given."
+  },
+  {
+    "id": "cups-05",
+    "title": "Five of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-05.jpg",
+    "description": "Loss, grief, and dwelling on what is gone. Kneeling before three spilled cups, the figure mourns — but two cups still stand behind him. Not all is lost."
+  },
+  {
+    "id": "cups-06",
+    "title": "Six of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-06.jpg",
+    "description": "Nostalgia, childhood memory, and innocent joy. Children fill their cups in a garden — a return to simpler times and pure, uncomplicated happiness."
+  },
+  {
+    "id": "cups-07",
+    "title": "Seven of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-07.jpg",
+    "description": "Choices, fantasy, and wishful thinking. Seven cups drift in the clouds, each holding a vision — dreams are abundant, but only one can become real."
+  },
+  {
+    "id": "cups-08",
+    "title": "Eight of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-08.jpg",
+    "description": "Walking away, deeper meaning, and leaving the familiar. The figure departs at night with six cups behind — sometimes growth means leaving what is comfortable."
+  },
+  {
+    "id": "cups-09",
+    "title": "Nine of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-09.jpg",
+    "description": "Contentment, satisfaction, and a wish fulfilled. Arms crossed before nine full cups, the figure savours the quiet joy of having enough."
+  },
+  {
+    "id": "cups-10",
+    "title": "Ten of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-10.jpg",
+    "description": "Lasting harmony, love, and emotional fulfillment. A rainbow arcs over a family dancing together — deep belonging and a happy home."
+  },
+  {
+    "id": "cups-page",
+    "title": "Page of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-page.jpg",
+    "description": "Creativity, intuition, and a gentle new message. The page gazes at the fish in his cup — a sensitive soul receiving emotional or artistic inspiration."
+  },
+  {
+    "id": "cups-knight",
+    "title": "Knight of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-knight.jpg",
+    "description": "Romance, charm, and following the heart. The knight rides a white horse bearing a cup — an offer of love, or a creative pursuit chased with idealism."
+  },
+  {
+    "id": "cups-queen",
+    "title": "Queen of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-queen.jpg",
+    "description": "Compassion, emotional maturity, and deep intuition. Seated by the sea with her cup, she is a nurturing, empathic presence who feels more than she says."
+  },
+  {
+    "id": "cups-king",
+    "title": "King of Cups",
+    "arcana": "Cups",
+    "image": "cards/cups-king.jpg",
+    "description": "Emotional balance, diplomacy, and mastery of feelings. Ruling the waves from his throne, he is calm control over deep waters — generous, wise, and kind."
+  },
+  {
+    "id": "swords-ace",
+    "title": "Ace of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-ace.jpg",
+    "description": "A breakthrough of clarity and a piercing new idea. The hand from the clouds raises a sword crowned with laurels — the triumph of the mind."
+  },
+  {
+    "id": "swords-02",
+    "title": "Two of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-02.jpg",
+    "description": "Indecision, difficult choices, and stalemate. Blindfolded and balancing two crossed blades, the figure shows that the hardest choice is often the one you avoid."
+  },
+  {
+    "id": "swords-03",
+    "title": "Three of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-03.jpg",
+    "description": "Heartbreak, sorrow, and painful truth. A storm rages over a heart pierced by three swords — grief that is real, but not forever."
+  },
+  {
+    "id": "swords-04",
+    "title": "Four of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-04.jpg",
+    "description": "Rest, recovery, and quiet contemplation. The figure lies in peaceful repose — a necessary pause that restores your strength."
+  },
+  {
+    "id": "swords-05",
+    "title": "Five of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-05.jpg",
+    "description": "Conflict, hollow victory, and winning at a cost. The victor gathers swords while others retreat — a win that can leave you poorer than before."
+  },
+  {
+    "id": "swords-06",
+    "title": "Six of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-06.jpg",
+    "description": "Transition, moving on, and leaving turmoil behind. A ferryman carries passengers toward calm waters — a journey toward healing and a gentler shore."
+  },
+  {
+    "id": "swords-07",
+    "title": "Seven of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-07.jpg",
+    "description": "Strategy, deception, and slipping away. The figure creeps off with five swords, leaving two behind — sometimes you must act quietly to get what you need."
+  },
+  {
+    "id": "swords-08",
+    "title": "Eight of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-08.jpg",
+    "description": "Restriction, negative thoughts, and feeling trapped. Bound and blindfolded before eight swords, the figure reminds you that the cage is often one you build yourself."
+  },
+  {
+    "id": "swords-09",
+    "title": "Nine of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-09.jpg",
+    "description": "Anxiety, worry, and sleepless nights. Sitting up in bed with nine swords on the wall, the figure shows how fear looms largest in the dark."
+  },
+  {
+    "id": "swords-10",
+    "title": "Ten of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-10.jpg",
+    "description": "Painful endings, deep wounds, and rock bottom. Pierced by ten swords at dawn — the darkest moment right before the light returns."
+  },
+  {
+    "id": "swords-page",
+    "title": "Page of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-page.jpg",
+    "description": "Vigilance, curiosity, and a sharp new idea. The page raises his sword — an eager mind hunting for truth and fresh perspectives."
+  },
+  {
+    "id": "swords-knight",
+    "title": "Knight of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-knight.jpg",
+    "description": "Ambition, action, and charging into battle. The knight gallops with his sword raised — swift and decisive, and sometimes reckless."
+  },
+  {
+    "id": "swords-queen",
+    "title": "Queen of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-queen.jpg",
+    "description": "Independence, clear boundaries, and honest intellect. Seated among the clouds with her sword, she is uncompromising truth — perceptive, fair, and direct."
+  },
+  {
+    "id": "swords-king",
+    "title": "King of Swords",
+    "arcana": "Swords",
+    "image": "cards/swords-king.jpg",
+    "description": "Authority, truth, and intellectual power. The king lifts his sword to the sky — reason and justice wielded with a steady, incorruptible hand."
+  },
+  {
+    "id": "pentacles-ace",
+    "title": "Ace of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-ace.jpg",
+    "description": "A new financial opportunity and a material beginning. The hand from the cloud offers a golden pentacle — prosperity and security taking root."
+  },
+  {
+    "id": "pentacles-02",
+    "title": "Two of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-02.jpg",
+    "description": "Balance, adaptability, and juggling priorities. The figure dances with two pentacles linked by an infinity ribbon — keeping many things in motion at once."
+  },
+  {
+    "id": "pentacles-03",
+    "title": "Three of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-03.jpg",
+    "description": "Teamwork, craftsmanship, and collaboration. The mason carves a cathedral arch while his client looks on — skill recognized and rewarded through cooperation."
+  },
+  {
+    "id": "pentacles-04",
+    "title": "Four of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-04.jpg",
+    "description": "Security, control, and holding on tightly. Pentacles clutched to crown, hands, and feet give stability — but at the cost of openness."
+  },
+  {
+    "id": "pentacles-05",
+    "title": "Five of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-05.jpg",
+    "description": "Hardship, loss, and feeling left out in the cold. Two figures pass a lit window in the snow — struggle is real, but shelter and help exist if you ask for them."
+  },
+  {
+    "id": "pentacles-06",
+    "title": "Six of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-06.jpg",
+    "description": "Generosity, giving, and fair exchange. The merchant weighs coins on his scales, giving to those in need — charity and balanced reciprocity."
+  },
+  {
+    "id": "pentacles-07",
+    "title": "Seven of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-07.jpg",
+    "description": "Patience, long-term view, and assessing progress. The farmer leans on his staff, surveying vines heavy with fruit — hard work is growing, but the harvest is not yet in."
+  },
+  {
+    "id": "pentacles-08",
+    "title": "Eight of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-08.jpg",
+    "description": "Apprenticeship, skill, and diligent practice. The artisan carves pentacles one by one — mastery comes from focused, repeated effort."
+  },
+  {
+    "id": "pentacles-09",
+    "title": "Nine of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-09.jpg",
+    "description": "Luxury, self-sufficiency, and enjoying the fruits of labor. The woman walks her vineyard with a hooded falcon — independence and refined comfort."
+  },
+  {
+    "id": "pentacles-10",
+    "title": "Ten of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-10.jpg",
+    "description": "Wealth, inheritance, and lasting legacy. A family beneath an archway of pentacles — prosperity shared across generations."
+  },
+  {
+    "id": "pentacles-page",
+    "title": "Page of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-page.jpg",
+    "description": "Ambition, practicality, and a new opportunity. The page studies his pentacle — a grounded approach to manifesting material goals."
+  },
+  {
+    "id": "pentacles-knight",
+    "title": "Knight of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-knight.jpg",
+    "description": "Hard work, routine, and dependable progress. The knight rides slowly across fertile fields — steady, methodical effort that reliably gets results."
+  },
+  {
+    "id": "pentacles-queen",
+    "title": "Queen of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-queen.jpg",
+    "description": "Nurturing, practicality, and abundant comfort. Seated in her lush garden, she is a generous provider of material and emotional security."
+  },
+  {
+    "id": "pentacles-king",
+    "title": "King of Pentacles",
+    "arcana": "Pentacles",
+    "image": "cards/pentacles-king.jpg",
+    "description": "Success, abundance, and material mastery. The king on his throne, the bull's head on his pedestal — wealth and business acumen at their peak."
+  }
+]

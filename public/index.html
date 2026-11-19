@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rider-Waite Tarot — All 78 Cards</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Rider-Waite Tarot</h1>
+    <p class="subtitle">All 78 cards of the Rider-Waite-Smith deck &mdash; click any card to view it</p>
+  </header>
+
+  <nav class="filter-bar" aria-label="Filter cards">
+    <div class="filter-inner">
+      <input type="search" id="card-search" class="card-search" placeholder="Search cards by name or meaning&hellip;" aria-label="Search cards" autocomplete="off" />
+      <div class="filter-buttons" id="filter-buttons" role="group" aria-label="Filter by arcana">
+        <button type="button" class="filter-btn active" data-arcana="All" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-arcana="Major Arcana" aria-pressed="false">Major Arcana</button>
+        <button type="button" class="filter-btn" data-arcana="Wands" aria-pressed="false">Wands</button>
+        <button type="button" class="filter-btn" data-arcana="Cups" aria-pressed="false">Cups</button>
+        <button type="button" class="filter-btn" data-arcana="Swords" aria-pressed="false">Swords</button>
+        <button type="button" class="filter-btn" data-arcana="Pentacles" aria-pressed="false">Pentacles</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="gallery" class="gallery" aria-live="polite">
+    <p class="loading">Loading the deck&hellip;</p>
+  </main>
+
+  <dialog id="card-dialog" class="card-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button id="dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+      <div class="dialog-image">
+        <img id="dialog-img" src="" alt="" />
+      </div>
+      <div class="dialog-text">
+        <p id="dialog-arcana" class="dialog-arcana"></p>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

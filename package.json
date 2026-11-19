@@ -1,0 +1,12 @@
+{
+  "name": "rider-waite-tarot-gallery",
+  "version": "1.0.0",
+  "description": "Single-page gallery of all 78 Rider-Waite tarot cards with modal detail view",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "fetch-cards": "python3 tools/fetch_cards.py",
+    "sync-cards": "node tools/sync_cards_to_klapi.js"
+  },
+  "license": "MIT"
+}

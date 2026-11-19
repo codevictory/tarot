@@ -1,0 +1,311 @@
+:root {
+  --bg: #14101f;
+  --bg-soft: #1e1830;
+  --card-bg: #241c3a;
+  --card-border: #3a2f5c;
+  --text: #ece7f7;
+  --text-dim: #a99ec7;
+  --accent: #c9a24b;
+  --accent-soft: rgba(201, 162, 75, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #2a2044 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.site-header {
+  text-align: center;
+  padding: 48px 16px 8px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.6rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-variant: small-caps;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  margin: 10px 0 0;
+  font-style: italic;
+}
+
+/* ---- filter navigation: search left, arcana buttons right ---- */
+.filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-top: 28px;
+  background: rgba(20, 16, 31, 0.88);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.filter-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 14px 40px;
+}
+
+.card-search {
+  width: 260px;
+  max-width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 9px 18px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card-search::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.card-search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.filter-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.filter-btn:hover,
+.filter-btn:focus-visible {
+  color: var(--text);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.filter-btn.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 650px) {
+  .filter-inner { padding: 12px 16px; }
+  .card-search { flex: 1 1 100%; width: 100%; }
+  .filter-buttons { margin-left: 0; }
+}
+
+/* ---- grid: five cards per row ---- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  padding: 32px 40px 64px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .gallery { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 950px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 650px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); padding: 24px 16px 48px; }
+}
+
+.section-title {
+  grid-column: 1 / -1;
+  margin: 28px 0 4px;
+  font-size: 1.4rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 8px;
+}
+
+/* ---- card tile ---- */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--accent-soft);
+  outline: none;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 5 / 8.6;
+  object-fit: cover;
+  display: block;
+  background: #0d0a16;
+}
+
+.card-body {
+  padding: 12px 14px 16px;
+}
+
+.card-title {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  color: var(--accent);
+}
+
+.card-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* ---- modal dialog with blurred backdrop ---- */
+.card-dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: min(880px, 92vw);
+  width: 100%;
+}
+
+.card-dialog::backdrop {
+  background: rgba(10, 7, 20, 0.55);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+}
+
+.dialog-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 340px) 1fr;
+  gap: 28px;
+  background: var(--bg-soft);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: pop 0.22s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.94) translateY(10px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .dialog-inner { grid-template-columns: 1fr; }
+}
+
+.dialog-image img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  display: block;
+}
+
+.dialog-text {
+  align-self: center;
+}
+
+.dialog-arcana {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.dialog-text h2 {
+  margin: 0 0 14px;
+  font-size: 2rem;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.dialog-text p:last-child {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.dialog-close:hover,
+.dialog-close:focus-visible {
+  color: var(--accent);
+  background: var(--accent-soft);
+  outline: none;
+}
