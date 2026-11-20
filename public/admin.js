@@ -44,6 +44,11 @@ const I18N = {
     'card.saving': 'Tallennetaan…',
     'card.saved': 'Tallennettu',
     'card.saveError': 'Tallennus epäonnistui: otsikot ovat pakollisia',
+    'card.viewImage': 'Näytä korttikuva isona',
+    'dialog.aria': 'Korttikuva',
+    'dialog.close': 'Sulje',
+    'card.aiTag': '"Written by AI" -merkintä',
+    'card.aiTagSaveError': 'Merkinnän tallennus epäonnistui',
   },
   en: {
     'document.title': 'Tarot admin',
@@ -73,6 +78,11 @@ const I18N = {
     'card.saving': 'Saving…',
     'card.saved': 'Saved',
     'card.saveError': 'Save failed: titles are required',
+    'card.viewImage': 'View card image large',
+    'dialog.aria': 'Card image',
+    'dialog.close': 'Close',
+    'card.aiTag': '"Written by AI" tag',
+    'card.aiTagSaveError': 'Failed to save the tag',
   },
 };
 
@@ -87,12 +97,15 @@ const logoutBtn = document.getElementById('logout-btn');
 const editorStatus = document.getElementById('editor-status');
 const cardForms = document.getElementById('card-forms');
 const langPicker = document.getElementById('lang-picker');
+const imageDialog = document.getElementById('image-dialog');
+const imageDialogImg = document.getElementById('image-dialog-img');
+const imageDialogClose = document.getElementById('image-dialog-close');
 
 let lang = normalizeLang(localStorage.getItem(LANG_STORAGE_KEY)) || DEFAULT_LANG;
 let token = localStorage.getItem(TOKEN_STORAGE_KEY) || '';
 let signedInUsername = localStorage.getItem(USERNAME_STORAGE_KEY) || '';
 let cards = [];
-// cardId -> { englishTitle, englishDescription, finnishTitle, finnishDescription }
+// cardId -> { englishTitle, englishDescription, finnishTitle, finnishDescription, writtenByAi }
 let drafts = new Map();
 let savingIds = new Set();
 
@@ -123,6 +136,10 @@ function applyLanguage() {
     const isActive = btn.dataset.lang === lang;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-pressed', String(isActive));
+  });
+
+  cardForms.querySelectorAll('.admin-card-img').forEach((img) => {
+    img.alt = cardImageAlt(img.dataset.cardId);
   });
 
   adminUser.textContent = signedInUsername ? `${t('signedInAs')} ${signedInUsername}` : '';
@@ -252,7 +269,27 @@ function draftFromCard(card) {
     englishDescription: en?.description ?? card.description ?? '',
     finnishTitle: fi?.title ?? '',
     finnishDescription: fi?.description ?? '',
+    // Missing flag means tagged (klapi defaults writtenByAi to true).
+    writtenByAi: card.writtenByAi !== false,
   };
+}
+
+// Card images are stored as root-relative paths ("cards/fool.jpg"); prefix
+// with "/" so they resolve the same whether the admin page is served at
+// /admin or /admin/.
+function cardImageSrc(image) {
+  return image.startsWith('/') ? image : `/${image}`;
+}
+
+// Alt text for the card thumbnail follows the UI language, falling back to
+// the other language and then the canonical (English) title.
+function cardImageAlt(cardId) {
+  const draft = drafts.get(cardId);
+  const card = cards.find((c) => c.id === cardId);
+  const fallback = card?.title || '';
+  if (!draft) return fallback;
+  if (lang === 'fi') return draft.finnishTitle || draft.englishTitle || fallback;
+  return draft.englishTitle || draft.finnishTitle || fallback;
 }
 
 function visibleCards() {
@@ -314,10 +351,31 @@ function renderCardForms() {
     form.className = 'admin-card';
     form.dataset.cardId = card.id;
 
+    if (card.image) {
+      const thumb = document.createElement('button');
+      thumb.type = 'button';
+      thumb.className = 'admin-card-thumb';
+      thumb.dataset.i18nAria = 'card.viewImage';
+      thumb.setAttribute('aria-label', t('card.viewImage'));
+      thumb.addEventListener('click', () => openImageDialog(card.id));
+
+      const img = document.createElement('img');
+      img.className = 'admin-card-img';
+      img.src = cardImageSrc(card.image);
+      img.alt = cardImageAlt(card.id);
+      img.loading = 'lazy';
+      img.dataset.cardId = card.id;
+      thumb.appendChild(img);
+      form.appendChild(thumb);
+    }
+
+    const content = document.createElement('div');
+    content.className = 'admin-card-content';
+
     const heading = document.createElement('h3');
     heading.className = 'admin-card-heading';
     heading.textContent = `${card.id} — ${card.arcana}`;
-    form.appendChild(heading);
+    content.appendChild(heading);
 
     const fields = [
       ['card.englishTitle', 'englishTitle', false],
@@ -331,11 +389,22 @@ function renderCardForms() {
       label.className = 'admin-field';
       label.appendChild(labelSpan(labelKey));
       label.appendChild(fieldInput(card.id, field, multiline));
-      form.appendChild(label);
+      content.appendChild(label);
     }
 
     const actions = document.createElement('div');
     actions.className = 'admin-card-actions';
+
+    const aiTagToggle = aiTagToggleInput(card.id);
+    const aiTagLabel = document.createElement('label');
+    aiTagLabel.className = 'ai-tag-toggle';
+    const track = document.createElement('span');
+    track.className = 'toggle-track';
+    track.setAttribute('aria-hidden', 'true');
+    const thumb = document.createElement('span');
+    thumb.className = 'toggle-thumb';
+    track.appendChild(thumb);
+    aiTagLabel.append(aiTagToggle, track, labelSpan('card.aiTag'));
 
     const saveBtn = document.createElement('button');
     saveBtn.type = 'submit';
@@ -348,8 +417,10 @@ function renderCardForms() {
     const status = document.createElement('span');
     status.className = 'admin-card-status';
 
-    actions.append(saveBtn, status);
-    form.appendChild(actions);
+    actions.append(aiTagLabel, saveBtn, status);
+    content.appendChild(actions);
+
+    form.appendChild(content);
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -413,6 +484,78 @@ function renderSaveButtons() {
   });
 }
 
+// The per-card "Written by AI" toggle. It saves immediately on change through
+// /admin/api/cards/<id>/written-by-ai (proxied to klapi), independent of the
+// text Save button.
+function aiTagToggleInput(cardId) {
+  const draft = drafts.get(cardId);
+  const input = document.createElement('input');
+  input.type = 'checkbox';
+  input.checked = Boolean(draft?.writtenByAi);
+  input.addEventListener('change', () => {
+    void saveWrittenByAi(cardId, input.checked);
+  });
+  return input;
+}
+
+function aiTagInputFor(cardId) {
+  return cardForms.querySelector(`form[data-card-id="${CSS.escape(cardId)}"] .ai-tag-toggle input`);
+}
+
+async function saveWrittenByAi(cardId, writtenByAi) {
+  const draft = drafts.get(cardId);
+  if (!draft) return;
+
+  const input = aiTagInputFor(cardId);
+  if (input) input.disabled = true;
+  setCardStatus(cardId, '', false);
+
+  try {
+    const res = await apiFetch(`/admin/api/cards/${encodeURIComponent(cardId)}/written-by-ai`, {
+      method: 'PUT',
+      body: JSON.stringify({ writtenByAi }),
+    });
+
+    if (res.status === 401 || res.status === 403) {
+      showLogin();
+      return;
+    }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    const updated = res.body;
+    cards = cards.map((card) => (card.id === cardId ? updated : card));
+    drafts.set(cardId, draftFromCard(updated));
+    setCardStatus(cardId, t('card.saved'), false);
+  } catch {
+    draft.writtenByAi = !writtenByAi;
+    if (input) input.checked = !writtenByAi;
+    setCardStatus(cardId, t('card.aiTagSaveError'), true);
+  } finally {
+    const current = aiTagInputFor(cardId);
+    if (current) current.disabled = false;
+  }
+}
+
+// Clicking a card thumbnail opens the image large in a centered modal
+// dialog (same pattern as the gallery's card dialog).
+function openImageDialog(cardId) {
+  const card = cards.find((c) => c.id === cardId);
+  if (!card || !card.image) return;
+  imageDialogImg.src = cardImageSrc(card.image);
+  imageDialogImg.alt = cardImageAlt(cardId);
+  if (typeof imageDialog.showModal === 'function') {
+    imageDialog.showModal();
+  } else {
+    imageDialog.setAttribute('open', '');
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageDialog() {
+  if (imageDialog.open) imageDialog.close();
+  document.body.style.overflow = '';
+}
+
 loginForm.addEventListener('submit', (event) => {
   void handleLogin(event);
 });
@@ -423,6 +566,17 @@ logoutBtn.addEventListener('click', () => {
 
 adminFilter.addEventListener('input', () => {
   renderCardForms();
+});
+
+imageDialogClose.addEventListener('click', closeImageDialog);
+
+// Click on the blurred backdrop (outside the dialog content) closes the modal.
+imageDialog.addEventListener('click', (event) => {
+  if (event.target === imageDialog) closeImageDialog();
+});
+
+imageDialog.addEventListener('close', () => {
+  document.body.style.overflow = '';
 });
 
 applyLanguage();

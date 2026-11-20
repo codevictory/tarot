@@ -9,6 +9,7 @@ const dialogTitle = document.getElementById('dialog-title');
 const dialogArcana = document.getElementById('dialog-arcana');
 const dialogDescription = document.getElementById('dialog-description');
 const dialogClose = document.getElementById('dialog-close');
+const dialogAiTag = document.getElementById('dialog-ai-tag');
 const langPicker = document.getElementById('lang-picker');
 
 // Arcana filter keys are the stable (English) values stored in the database;
@@ -21,9 +22,9 @@ const DEFAULT_LANG = 'fi';
 
 const I18N = {
   fi: {
-    'document.title': 'Rider-Waite-tarot — Kaikki 78 korttia',
-    'header.title': 'Rider-Waite-tarot',
-    'header.subtitle': 'Kaikki Rider-Waite-Smith -pakan 78 korttia — klikkaa korttia nähdäksesi sen',
+    'document.title': 'Tarot Lintujärvi',
+    'header.title': 'Tarot Lintujärvi',
+    'header.subtitle': 'Tulkintojani ja ajatuksiani korteista sekä Tarot-symboliikasta. Käyn sivustoa läpi ja korvaan tekoäly tekstejä omillani kortti kerrallaan.',
     'lang.aria': 'Kieli',
     'search.placeholder': 'Hae kortteja nimen tai merkityksen mukaan…',
     'search.aria': 'Hae kortteja',
@@ -40,11 +41,12 @@ const I18N = {
     'loadError': 'Pakkaa ei voitu ladata: ',
     'viewCard': 'Näytä',
     'dialog.close': 'Sulje',
+    'aiTag': 'Tekoälyn kirjoittama',
   },
   en: {
-    'document.title': 'Rider-Waite Tarot — All 78 Cards',
-    'header.title': 'Rider-Waite Tarot',
-    'header.subtitle': 'All 78 cards of the Rider-Waite-Smith deck — click any card to view it',
+    'document.title': 'Tarot Lintujärvi',
+    'header.title': 'Tarot Lintujärvi',
+    'header.subtitle': 'My interpretations and thoughts on the cards and Tarot symbolism. I am going through the site and replacing the AI texts with my own, one card at a time.',
     'lang.aria': 'Language',
     'search.placeholder': 'Search cards by name or meaning…',
     'search.aria': 'Search cards',
@@ -61,6 +63,7 @@ const I18N = {
     'loadError': 'Could not load the deck: ',
     'viewCard': 'View',
     'dialog.close': 'Close',
+    'aiTag': 'Written by AI',
   },
 };
 
@@ -92,6 +95,12 @@ function localizedCard(card, language) {
 
 // Search matches the card text in every stored language, so a Finnish query
 // also finds cards while the UI is in English and vice versa.
+// The "Written by AI" tag is a per-card flag (writtenByAi in klapi), toggled
+// from the admin page. Cards without the field are treated as tagged.
+function isWrittenByAi(card) {
+  return card.writtenByAi !== false;
+}
+
 function searchHaystack(card) {
   const parts = [card.title, card.arcana, card.description];
   if (card.translations) {
@@ -174,6 +183,12 @@ function renderCards(cards) {
 
       body.append(title, desc);
       btn.append(img, body);
+      if (isWrittenByAi(card)) {
+        const tag = document.createElement('span');
+        tag.className = 'ai-tag';
+        tag.textContent = t('aiTag');
+        btn.appendChild(tag);
+      }
       btn.addEventListener('click', () => openDialog(card));
       gallery.appendChild(btn);
     }
@@ -199,6 +214,7 @@ function renderDialog() {
   dialogTitle.textContent = l.title;
   dialogArcana.textContent = l.arcana;
   dialogDescription.textContent = l.description;
+  dialogAiTag.hidden = !isWrittenByAi(currentCard);
 }
 
 function closeDialog() {

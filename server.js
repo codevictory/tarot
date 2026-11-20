@@ -8,6 +8,7 @@ const {
   loginToKlapi,
   fetchAdminCardsFromKlapi,
   updateAdminCardTextsInKlapi,
+  updateAdminCardWrittenByAiInKlapi,
 } = require('./lib/klapiClient');
 
 const PORT = process.env.PORT || 3000;
@@ -42,6 +43,7 @@ async function getCards() {
 // API key never leaves this server.
 const ADMIN_PAGE = '/admin.html';
 const ADMIN_TEXT_UPDATE_RE = /^\/admin\/api\/cards\/([^/]+)\/texts$/;
+const ADMIN_WRITTEN_BY_AI_RE = /^\/admin\/api\/cards\/([^/]+)\/written-by-ai$/;
 const MAX_BODY_BYTES = 1_000_000;
 
 function sendJson(res, status, payload) {
@@ -107,6 +109,29 @@ async function handleAdminApi(req, res, pathname) {
       sendJson(res, 200, cards);
     } catch (err) {
       sendJson(res, err.status || 502, { message: err.message });
+    }
+    return true;
+  }
+
+  const writtenByAiMatch = req.method === 'PUT' ? ADMIN_WRITTEN_BY_AI_RE.exec(pathname) : null;
+  if (writtenByAiMatch) {
+    const token = getBearerToken(req);
+    if (!token) {
+      sendJson(res, 401, { message: 'Missing bearer token.' });
+      return true;
+    }
+    // pathname was already decodeURIComponent'd above, so the capture is final.
+    const cardId = writtenByAiMatch[1];
+    try {
+      const body = await readJsonBody(req);
+      if (typeof body?.writtenByAi !== 'boolean') {
+        sendJson(res, 400, { message: 'writtenByAi must be a boolean.' });
+        return true;
+      }
+      const updated = await updateAdminCardWrittenByAiInKlapi(token, cardId, body.writtenByAi);
+      sendJson(res, 200, updated);
+    } catch (err) {
+      sendJson(res, err.status || err.statusCode || 502, { message: err.message });
     }
     return true;
   }

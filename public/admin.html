@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarot-ylläpito</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -43,6 +47,13 @@
       <div id="card-forms" class="admin-card-forms"></div>
     </section>
   </main>
+
+  <dialog id="image-dialog" class="card-dialog admin-image-dialog" data-i18n-aria="dialog.aria" aria-label="Korttikuva">
+    <div class="admin-image-inner">
+      <button id="image-dialog-close" class="dialog-close" data-i18n-aria="dialog.close" aria-label="Sulje">&times;</button>
+      <img id="image-dialog-img" src="" alt="" />
+    </div>
+  </dialog>
 
   <script src="admin.js"></script>
 </body>

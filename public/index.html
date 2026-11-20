@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rider-Waite-tarot — Kaikki 78 korttia</title>
+  <title>Tarot Lintujärvi</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,8 +17,8 @@
   </div>
 
   <header class="site-header">
-    <h1 data-i18n="header.title">Rider-Waite-tarot</h1>
-    <p class="subtitle" data-i18n="header.subtitle">Kaikki Rider-Waite-Smith -pakan 78 korttia &mdash; klikkaa korttia nähdäksesi sen</p>
+    <h1 data-i18n="header.title">Tarot Lintujärvi</h1>
+    <p class="subtitle" data-i18n="header.subtitle">Tulkintojani ja ajatuksiani korteista sekä Tarot-symboliikasta. Käyn sivustoa läpi ja korvaan tekoäly tekstejä omillani kortti kerrallaan.</p>
   </header>
 
   <nav class="filter-bar" data-i18n-aria="nav.aria" aria-label="Suodata kortteja">
@@ -43,6 +47,7 @@
       </div>
       <div class="dialog-text">
         <p id="dialog-arcana" class="dialog-arcana"></p>
+        <span id="dialog-ai-tag" class="ai-tag dialog-ai-tag" data-i18n="aiTag" hidden>Written by AI</span>
         <h2 id="dialog-title"></h2>
         <p id="dialog-description"></p>
       </div>
