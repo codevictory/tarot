@@ -3,7 +3,12 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { fetchAllCardsFromKlapi } = require('./lib/klapiClient');
+const {
+  fetchAllCardsFromKlapi,
+  loginToKlapi,
+  fetchAdminCardsFromKlapi,
+  updateAdminCardTextsInKlapi,
+} = require('./lib/klapiClient');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
@@ -28,6 +33,110 @@ async function getCards() {
   cardsCache = cards;
   cardsCacheAt = now;
   return cards;
+}
+
+// ---- Admin portal (/admin) ----
+// The admin page is a static file (public/admin.html). Its API calls are
+// proxied here to the klapi API with the portal user's Bearer token, so the
+// browser never talks to the klapi host directly (CORS) and the site-to-site
+// API key never leaves this server.
+const ADMIN_PAGE = '/admin.html';
+const ADMIN_TEXT_UPDATE_RE = /^\/admin\/api\/cards\/([^/]+)\/texts$/;
+const MAX_BODY_BYTES = 1_000_000;
+
+function sendJson(res, status, payload) {
+  res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache' });
+  res.end(JSON.stringify(payload));
+}
+
+function getBearerToken(req) {
+  const match = /^Bearer\s+(.+)$/i.exec((req.headers.authorization || '').trim());
+  return match ? match[1].trim() : null;
+}
+
+function readJsonBody(req) {
+  return new Promise((resolve, reject) => {
+    let size = 0;
+    const chunks = [];
+    req.on('data', (chunk) => {
+      size += chunk.length;
+      if (size > MAX_BODY_BYTES) {
+        reject(Object.assign(new Error('Request body too large.'), { statusCode: 413 }));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on('end', () => {
+      try {
+        resolve(JSON.parse(Buffer.concat(chunks).toString('utf8') || 'null'));
+      } catch {
+        reject(Object.assign(new Error('Invalid JSON body.'), { statusCode: 400 }));
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
+async function handleAdminApi(req, res, pathname) {
+  if (pathname === '/admin/api/login' && req.method === 'POST') {
+    try {
+      const body = await readJsonBody(req);
+      const username = typeof body?.username === 'string' ? body.username.trim() : '';
+      const password = typeof body?.password === 'string' ? body.password : '';
+      if (!username || !password) {
+        sendJson(res, 400, { message: 'Username and password are required.' });
+        return;
+      }
+      const result = await loginToKlapi(username, password);
+      sendJson(res, result.ok ? 200 : result.status, result.body ?? { message: 'Login failed.' });
+    } catch (err) {
+      sendJson(res, err.statusCode || 502, { message: err.message || 'Login request failed.' });
+    }
+    return true;
+  }
+
+  if (pathname === '/admin/api/cards' && req.method === 'GET') {
+    const token = getBearerToken(req);
+    if (!token) {
+      sendJson(res, 401, { message: 'Missing bearer token.' });
+      return true;
+    }
+    try {
+      const cards = await fetchAdminCardsFromKlapi(token);
+      sendJson(res, 200, cards);
+    } catch (err) {
+      sendJson(res, err.status || 502, { message: err.message });
+    }
+    return true;
+  }
+
+  const textMatch = req.method === 'PUT' ? ADMIN_TEXT_UPDATE_RE.exec(pathname) : null;
+  if (textMatch) {
+    const token = getBearerToken(req);
+    if (!token) {
+      sendJson(res, 401, { message: 'Missing bearer token.' });
+      return true;
+    }
+    // pathname was already decodeURIComponent'd above, so the capture is final.
+    const cardId = textMatch[1];
+    try {
+      const body = await readJsonBody(req);
+      const texts = {
+        englishTitle: typeof body?.englishTitle === 'string' ? body.englishTitle : '',
+        englishDescription: typeof body?.englishDescription === 'string' ? body.englishDescription : '',
+        finnishTitle: typeof body?.finnishTitle === 'string' ? body.finnishTitle : '',
+        finnishDescription: typeof body?.finnishDescription === 'string' ? body.finnishDescription : '',
+      };
+      const updated = await updateAdminCardTextsInKlapi(token, cardId, texts);
+      sendJson(res, 200, updated);
+    } catch (err) {
+      sendJson(res, err.status || err.statusCode || 502, { message: err.message });
+    }
+    return true;
+  }
+
+  return false;
 }
 
 const MIME = {
@@ -57,6 +166,14 @@ const server = http.createServer(async (req, res) => {
       res.end(JSON.stringify({ error: 'cards data unavailable' }));
     }
     return;
+  }
+
+  // Admin portal: the page is reached only by typing /admin manually.
+  if (pathname === '/admin' || pathname === '/admin/') {
+    pathname = ADMIN_PAGE;
+  } else if (pathname.startsWith('/admin/api/')) {
+    await handleAdminApi(req, res, pathname);
+    if (res.writableEnded) return;
   }
 
   if (pathname === '/') pathname = '/index.html';

@@ -355,3 +355,183 @@ body {
   background: var(--accent-soft);
   outline: none;
 }
+
+/* ---- admin portal (/admin) ---- */
+/* Class display rules below would otherwise beat the UA [hidden] rule. */
+.admin-root [hidden] {
+  display: none !important;
+}
+
+.admin-root {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+.admin-login {
+  margin: 32px auto 0;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.admin-login h2 {
+  margin: 0;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.admin-login label,
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.admin-login input,
+.admin-field input,
+.admin-field textarea {
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 9px 12px;
+  width: 100%;
+}
+
+.admin-login input:focus,
+.admin-field input:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.admin-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.admin-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.admin-btn:hover,
+.admin-btn:focus-visible {
+  color: var(--text);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.admin-btn.primary {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.admin-btn.primary:hover,
+.admin-btn.primary:focus-visible {
+  color: var(--accent);
+  background: rgba(201, 162, 75, 0.28);
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+a.admin-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.admin-error {
+  margin: 0;
+  color: #e08a8a;
+  font-size: 0.9rem;
+}
+
+.admin-status {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin: 24px 0 8px;
+}
+
+.admin-toolbar .card-search {
+  flex: 1 1 240px;
+  width: auto;
+}
+
+.admin-user {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.admin-card-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.admin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-card-heading {
+  margin: 0;
+  font-size: 1.05rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.admin-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin-card-status {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.admin-card-status.admin-saved {
+  color: #8fd18f;
+}
+
+.admin-card-status.admin-error {
+  color: #e08a8a;
+}

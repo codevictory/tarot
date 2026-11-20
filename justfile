@@ -13,6 +13,4 @@ install:
 	cd {{root_dir}} && npm install
 
 deploy:
-	git -C {{root_dir}} pull
-	cd {{root_dir}} && npm ci
-	pm2 restart tarot
+	{{root_dir}}/scripts/deploy.sh
