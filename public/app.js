@@ -3,6 +3,7 @@
 const gallery = document.getElementById('gallery');
 const searchInput = document.getElementById('card-search');
 const filterButtons = document.getElementById('filter-buttons');
+const dailyCardBtn = document.getElementById('daily-card-btn');
 const dialog = document.getElementById('card-dialog');
 const dialogImg = document.getElementById('dialog-img');
 const dialogTitle = document.getElementById('dialog-title');
@@ -40,6 +41,8 @@ const I18N = {
     'noMatches': 'Yksikään kortti ei vastaa nykyisiä suodattimia.',
     'loadError': 'Pakkaa ei voitu ladata: ',
     'viewCard': 'Näytä',
+    'dailyCard': 'Päivän kortti',
+    'dailyCard.aria': 'Nosta päivän kortti satunnaisesti',
     'dialog.close': 'Sulje',
     'aiTag': 'Tekoälyn kirjoittama',
   },
@@ -62,6 +65,8 @@ const I18N = {
     'noMatches': 'No cards match the current filters.',
     'loadError': 'Could not load the deck: ',
     'viewCard': 'View',
+    'dailyCard': 'Card of the day',
+    'dailyCard.aria': 'Draw a random card of the day',
     'dialog.close': 'Close',
     'aiTag': 'Written by AI',
   },
@@ -286,6 +291,14 @@ searchInput.addEventListener('input', () => {
   applyFilters();
 });
 
+// Picks one card at random from the whole deck and opens it exactly as if
+// its tile in the gallery had been clicked.
+dailyCardBtn.addEventListener('click', () => {
+  if (!cardsLoaded || allCards.length === 0) return;
+  const card = allCards[Math.floor(Math.random() * allCards.length)];
+  openDialog(card);
+});
+
 applyLanguage();
 
 fetch('/api/cards')
@@ -296,6 +309,7 @@ fetch('/api/cards')
   .then((cards) => {
     allCards = cards;
     cardsLoaded = true;
+    dailyCardBtn.disabled = false;
     applyFilters();
   })
   .catch((err) => {
