@@ -8,6 +8,9 @@
 
 const TOKEN_STORAGE_KEY = 'tarot-admin-token';
 const USERNAME_STORAGE_KEY = 'tarot-admin-username';
+// The tarot admin page is for the dedicated tarot-admin portal user on the
+// klapi backend (hermes-trismegistos) — not the klapi admin account.
+const TAROT_ADMIN_ROLE = 'tarot-admin';
 const LANG_STORAGE_KEY = 'tarot-lang';
 const SUPPORTED_LANGS = ['fi', 'en'];
 const DEFAULT_LANG = 'fi';
@@ -199,7 +202,7 @@ async function handleLogin(event) {
     }
 
     const roles = Array.isArray(res.body?.roles) ? res.body.roles : [];
-    if (!roles.includes('admin')) {
+    if (!roles.includes(TAROT_ADMIN_ROLE)) {
       loginError.textContent = t('login.errorNotAdmin');
       loginError.hidden = false;
       return;
