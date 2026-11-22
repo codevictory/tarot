@@ -99,7 +99,9 @@ function localizedCard(card, language) {
 }
 
 // Search matches the card text in every stored language, so a Finnish query
-// also finds cards while the UI is in English and vice versa.
+// also finds cards while the UI is in English and vice versa. Descriptions
+// are markdown, so the haystack uses their plain-text form — searching
+// "new beginnings" matches "**New beginnings**".
 // The "Written by AI" tag is a per-card flag (writtenByAi in klapi), toggled
 // from the admin page. Cards without the field are treated as tagged.
 function isWrittenByAi(card) {
@@ -107,10 +109,10 @@ function isWrittenByAi(card) {
 }
 
 function searchHaystack(card) {
-  const parts = [card.title, card.arcana, card.description];
+  const parts = [card.title, card.arcana, TarotMarkdown.toPlainText(card.description)];
   if (card.translations) {
     for (const tr of Object.values(card.translations)) {
-      parts.push(tr.title, tr.arcana, tr.description);
+      parts.push(tr.title, tr.arcana, TarotMarkdown.toPlainText(tr.description));
     }
   }
   return parts.filter(Boolean).join(' ').toLowerCase();
@@ -182,9 +184,10 @@ function renderCards(cards) {
       title.className = 'card-title';
       title.textContent = l.title;
 
-      const desc = document.createElement('p');
-      desc.className = 'card-desc';
-      desc.textContent = l.description;
+      // Descriptions are markdown; rendered to safe HTML (see markdown.js).
+      const desc = document.createElement('div');
+      desc.className = 'card-desc markdown';
+      desc.innerHTML = TarotMarkdown.render(l.description);
 
       body.append(title, desc);
       btn.append(img, body);
@@ -218,7 +221,7 @@ function renderDialog() {
   dialogImg.alt = l.title;
   dialogTitle.textContent = l.title;
   dialogArcana.textContent = l.arcana;
-  dialogDescription.textContent = l.description;
+  dialogDescription.innerHTML = TarotMarkdown.render(l.description);
   dialogAiTag.hidden = !isWrittenByAi(currentCard);
 }
 

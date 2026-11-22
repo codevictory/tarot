@@ -19,7 +19,7 @@ const I18N = {
   fi: {
     'document.title': 'Tarot-ylläpito',
     'header.title': 'Tarot-korttien ylläpito',
-    'header.subtitle': 'Muokkaa korttien englannin- ja suomenkielisiä otsikoita ja kuvauksia',
+    'header.subtitle': 'Muokkaa korttien englannin- ja suomenkielisiä otsikoita ja kuvauksia (kuvaukset tukevat markdownia)',
     'lang.aria': 'Kieli',
     'nav.home': 'Korttigalleria',
     'login.heading': 'Kirjaudu sisään',
@@ -40,6 +40,7 @@ const I18N = {
     'card.englishDescription': 'Englanninkielinen kuvaus',
     'card.finnishTitle': 'Suomenkielinen otsikko',
     'card.finnishDescription': 'Suomenkielinen kuvaus',
+    'card.preview': 'Esikatselu',
     'card.save': 'Tallenna',
     'card.saving': 'Tallennetaan…',
     'card.saved': 'Tallennettu',
@@ -53,7 +54,7 @@ const I18N = {
   en: {
     'document.title': 'Tarot admin',
     'header.title': 'Tarot card admin',
-    'header.subtitle': 'Edit the English and Finnish titles and descriptions of the cards',
+    'header.subtitle': 'Edit the English and Finnish titles and descriptions of the cards (descriptions support markdown)',
     'lang.aria': 'Language',
     'nav.home': 'Card gallery',
     'login.heading': 'Sign in',
@@ -74,6 +75,7 @@ const I18N = {
     'card.englishDescription': 'English description',
     'card.finnishTitle': 'Finnish title',
     'card.finnishDescription': 'Finnish description',
+    'card.preview': 'Preview',
     'card.save': 'Save',
     'card.saving': 'Saving…',
     'card.saved': 'Saved',
@@ -312,17 +314,40 @@ function labelSpan(key) {
   return span;
 }
 
-function fieldInput(cardId, field, multiline) {
+function fieldInput(cardId, field, multiline, onInput) {
   const draft = drafts.get(cardId);
   const input = document.createElement(multiline ? 'textarea' : 'input');
   if (!multiline) input.type = 'text';
-  if (multiline) input.rows = 4;
+  if (multiline) input.rows = 8;
   input.value = draft[field];
   input.addEventListener('input', () => {
     draft[field] = input.value;
     setCardStatus(cardId, '', false);
+    if (onInput) onInput();
   });
   return input;
+}
+
+// Live preview of a markdown description, rendered exactly like on the
+// public page (see markdown.js). Hidden while the field is empty.
+function markdownPreview(cardId, field) {
+  const preview = document.createElement('div');
+  preview.className = 'admin-preview markdown';
+  const label = document.createElement('span');
+  label.className = 'admin-preview-label';
+  label.dataset.i18n = 'card.preview';
+  label.textContent = t('card.preview');
+  const body = document.createElement('div');
+  body.className = 'admin-preview-body';
+  preview.append(label, body);
+
+  function update() {
+    const html = TarotMarkdown.render(drafts.get(cardId)?.[field] ?? '');
+    body.innerHTML = html;
+    preview.hidden = !html;
+  }
+  update();
+  return { element: preview, update };
 }
 
 function setCardStatus(cardId, message, isError) {
@@ -388,8 +413,15 @@ function renderCardForms() {
       const label = document.createElement('label');
       label.className = 'admin-field';
       label.appendChild(labelSpan(labelKey));
-      label.appendChild(fieldInput(card.id, field, multiline));
-      content.appendChild(label);
+      if (multiline) {
+        const preview = markdownPreview(card.id, field);
+        label.appendChild(fieldInput(card.id, field, true, preview.update));
+        content.appendChild(label);
+        content.appendChild(preview.element);
+      } else {
+        label.appendChild(fieldInput(card.id, field, false));
+        content.appendChild(label);
+      }
     }
 
     const actions = document.createElement('div');

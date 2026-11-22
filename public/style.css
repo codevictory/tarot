@@ -284,6 +284,87 @@ body {
   overflow: hidden;
 }
 
+/* ---- rendered markdown (card descriptions, see markdown.js) ---- */
+.markdown > :first-child {
+  margin-top: 0;
+}
+
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown p {
+  margin: 0 0 0.7em;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 0.7em;
+  padding-left: 1.4em;
+}
+
+.markdown li {
+  margin: 0.15em 0;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin: 0.9em 0 0.4em;
+  color: var(--accent);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.markdown h1 { font-size: 1.25em; }
+.markdown h2 { font-size: 1.18em; }
+.markdown h3 { font-size: 1.1em; }
+.markdown h4,
+.markdown h5,
+.markdown h6 { font-size: 1em; }
+
+.markdown blockquote {
+  margin: 0 0 0.7em;
+  padding: 2px 0 2px 12px;
+  border-left: 3px solid var(--accent);
+  color: var(--text-dim);
+}
+
+.markdown code {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.9em;
+}
+
+.markdown pre {
+  margin: 0 0 0.7em;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.markdown pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown a {
+  color: var(--accent);
+}
+
+.markdown hr {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 0.8em 0;
+}
+
 .loading {
   grid-column: 1 / -1;
   text-align: center;
@@ -381,7 +462,7 @@ body {
   color: var(--accent);
 }
 
-.dialog-text p:last-child {
+.dialog-description {
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.65;
@@ -473,6 +554,26 @@ body {
 .admin-field textarea {
   resize: vertical;
   min-height: 90px;
+  font-family: ui-monospace, 'Courier New', monospace;
+}
+
+/* ---- live markdown preview under each description textarea ---- */
+.admin-preview {
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.admin-preview-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
 
 .admin-btn {
