@@ -320,73 +320,73 @@
     "description": "Auktoriteetti, totuus ja älyllinen voima. Miekkansa taivasta kohti kohottava Kuningas — järki ja oikeus, jota käytetään vakaalla, lahjomattomalla kädellä."
   },
   "pentacles-ace": {
-    "title": "Pentakeleiden ässä",
-    "arcana": "Pentakelit",
+    "title": "Lanttien ässä",
+    "arcana": "Lantit",
     "description": "Uusi taloudellinen mahdollisuus ja materiaalinen alku. Pilvestä ojentuva käsi tarjoaa kultaista pentakelia — vauraus ja turvallisuus saavat alkunsa."
   },
   "pentacles-02": {
-    "title": "Pentakeleiden kaksi",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kaksi",
+    "arcana": "Lantit",
     "description": "Tasapaino, sopeutumiskyky ja asioiden jonglööraus. Hahmo tanssii kahden äärettömyysnauhalla yhdistetyn pentakelin kanssa — monta asiaa liikkeellä yhtä aikaa."
   },
   "pentacles-03": {
-    "title": "Pentakeleiden kolme",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kolme",
+    "arcana": "Lantit",
     "description": "Tiimityö, ammattitaito ja yhteistyö. Muurari veistää katedraalin kaarta, kun asiakas katsoo vierestä — taito tunnustetaan ja palkitaan yhteistyön kautta."
   },
   "pentacles-04": {
-    "title": "Pentakeleiden neljä",
-    "arcana": "Pentakelit",
+    "title": "Lanttien neljä",
+    "arcana": "Lantit",
     "description": "Turvallisuus, kontrolli ja tiukka ote. Kruunuun, käsiin ja jalkoihin puristetut pentakelit antavat vakautta — mutta avoimuuden kustannuksella."
   },
   "pentacles-05": {
-    "title": "Pentakeleiden viisi",
-    "arcana": "Pentakelit",
+    "title": "Lanttien viisi",
+    "arcana": "Lantit",
     "description": "Vaikeudet, menetys ja ulkona kylmässä oleminen. Kaksi hahmoa kulkee lumessa valaistun ikkunan ohi — kamppailu on todellista, mutta suoja ja apu ovat olemassa, jos pyydät."
   },
   "pentacles-06": {
-    "title": "Pentakeleiden kuusi",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kuusi",
+    "arcana": "Lantit",
     "description": "Anteliaisuus, antaminen ja reilu vaihto. Kauppias punnitsee kolikoita vaa'allaan ja antaa tarvitseville — hyväntekeväisyys ja tasapainoinen vastavuoroisuus."
   },
   "pentacles-07": {
-    "title": "Pentakeleiden seitsemän",
-    "arcana": "Pentakelit",
+    "title": "Lanttien seitsemän",
+    "arcana": "Lantit",
     "description": "Kärsivällisyys, pitkän tähtäimen näkymä ja edistyksen arviointi. Maanviljelijä nojaa sauvaansa ja katsoo hedelmää kantavia köynnöksiä — kova työ kasvaa, mutta sato ei ole vielä kypsynyt."
   },
   "pentacles-08": {
-    "title": "Pentakeleiden kahdeksan",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kahdeksan",
+    "arcana": "Lantit",
     "description": "Oppipoikana oleminen, taito ja ahkera harjoittelu. Käsityöläinen veistää pentakeleita yksi toisensa jälkeen — mestaruus syntyy keskittyneestä, toistuvasta työstä."
   },
   "pentacles-09": {
-    "title": "Pentakeleiden yhdeksän",
-    "arcana": "Pentakelit",
+    "title": "Lanttien yhdeksän",
+    "arcana": "Lantit",
     "description": "Ylellisyys, omavaraisuus ja työn hedelmistä nauttiminen. Nainen kävelee viinitarhassaan huppupäinen haukka olallaan — itsenäisyys ja hienostunut mukavuus."
   },
   "pentacles-10": {
-    "title": "Pentakeleiden kymmenen",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kymmenen",
+    "arcana": "Lantit",
     "description": "Varallisuus, perintö ja kestävä perintö. Perhe pentakeleilla koristellun kaaren alla — sukupolvelta toiselle jaettu vauraus."
   },
   "pentacles-page": {
-    "title": "Pentakeleiden lähetti",
-    "arcana": "Pentakelit",
+    "title": "Lanttien lähetti",
+    "arcana": "Lantit",
     "description": "Kunnianhimo, käytännöllisyys ja uusi mahdollisuus. Lähetti tutkii pentakeliaan — maadoitettu lähestymistapa materiaalisten päämäärien toteuttamiseen."
   },
   "pentacles-knight": {
-    "title": "Pentakeleiden ritari",
-    "arcana": "Pentakelit",
+    "title": "Lanttien ritari",
+    "arcana": "Lantit",
     "description": "Kova työ, rutiinit ja luotettava edistyminen. Ritari ratsastaa hitaasti hedelmällisten peltojen halki — tasainen, määrätietoinen työ, joka tuottaa luotettavasti tulosta."
   },
   "pentacles-queen": {
-    "title": "Pentakeleiden kuningatar",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kuningatar",
+    "arcana": "Lantit",
     "description": "Hoivaavuus, käytännöllisyys ja runsas mukavuus. Rehevässä puutarhassaan istuva Kuningatar on antelias aineellisen ja emotionaalisen turvallisuuden tarjoaja."
   },
   "pentacles-king": {
-    "title": "Pentakeleiden kuningas",
-    "arcana": "Pentakelit",
+    "title": "Lanttien kuningas",
+    "arcana": "Lantit",
     "description": "Menestys, runsaus ja materiaalinen mestaruus. Valtikallaan istuva Kuningas, pedestaalillaan härän pää — vauraus ja liiketoimintaosaaminen huipussaan."
   }
 }

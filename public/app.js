@@ -36,7 +36,7 @@ const I18N = {
     'filter.Wands': 'Sauvat',
     'filter.Cups': 'Maljat',
     'filter.Swords': 'Miekat',
-    'filter.Pentacles': 'Pentakelit',
+    'filter.Pentacles': 'Lantit',
     'loading': 'Ladataan pakkaa…',
     'noMatches': 'Yksikään kortti ei vastaa nykyisiä suodattimia.',
     'loadError': 'Pakkaa ei voitu ladata: ',
