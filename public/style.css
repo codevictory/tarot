@@ -396,6 +396,11 @@ body {
   font-size: 0.75rem;
 }
 
+/* The display rule above would otherwise beat the UA [hidden] rule. */
+.dialog-ai-tag[hidden] {
+  display: none;
+}
+
 /* ---- modal dialog with blurred backdrop ---- */
 .card-dialog {
   border: none;
